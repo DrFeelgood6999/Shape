@@ -416,8 +416,15 @@ const IS_WEB=HTTP&&!IS_PC;
 /* ---------- Sincronização na nuvem (Supabase) ---------- */
 const CL_KEY='shape.cloud',BASE_KEY='shape.cloudBase',CDIRTY='shape.cloudDirty';
 const CLOUD={cfg:null,state:'off',err:'',lastSync:0,busy:false,again:false,timer:null,rev:0};
+const CLOUD_DEFAULT={url:'https://vheckeabvjtchcvoefeu.supabase.co',key:'sb_publishable_gmGWvDJk4yj0oXSXc0aRAA_u2VF2f_i'};
 try{CLOUD.cfg=JSON.parse(localStorage.getItem(CL_KEY)||'null')}catch(e){}
-const clSaveCfg=()=>{try{localStorage.setItem(CL_KEY,JSON.stringify(CLOUD.cfg))}catch(e){}};
+function clDefaults(){if(!CLOUD.cfg||!CLOUD.cfg.url||!CLOUD.cfg.key)CLOUD.cfg=Object.assign({email:'',mobileUrl:''},CLOUD.cfg||{},CLOUD_DEFAULT)}
+clDefaults();
+const clSaveCfg=()=>{try{localStorage.setItem(CL_KEY,JSON.stringify(CLOUD.cfg))}catch(e){}
+  if(IS_PC)fetch('/api/cloud',{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(CLOUD.cfg||{})}).catch(()=>{})};
+async function clLoadFromServer(){try{const r=await fetch('/api/cloud',{cache:'no-store'});if(!r.ok)return;const c=await r.json();
+  if(c&&c.url&&c.refresh&&(!clReady()||(c.exp||0)>(CLOUD.cfg.exp||0))){CLOUD.cfg=c;try{localStorage.setItem(CL_KEY,JSON.stringify(c))}catch(e){}}
+  else if(clReady())clSaveCfg()}catch(e){}}
 const clReady=()=>!!(CLOUD.cfg&&CLOUD.cfg.url&&CLOUD.cfg.key&&CLOUD.cfg.refresh&&CLOUD.cfg.uid);
 class AuthErr extends Error{}
 async function clJSON(r){try{return await r.json()}catch(e){return {}}}
@@ -572,6 +579,7 @@ async function boot(){
   let local=null,dirty=false;try{local=JSON.parse(localStorage.getItem(LS)||'null');dirty=localStorage.getItem(LS+'.dirty')==='1'}catch(e){}
   let remote=null;
   try{const pg=await fetch('/api/ping',{cache:'no-store'});const j=await pg.json();NET.dataDir=j.dataDir||'';NET.ok=true;remote=await pull()}catch(e){NET.ok=false}
+  if(NET.ok)await clLoadFromServer();
   let needPush=false;
   if(remote&&local&&dirty&&(local.savedAt||0)>(remote.savedAt||0)){S=local;needPush=true}
   else if(remote)S=remote;
@@ -601,7 +609,7 @@ function cloudFormHTML(ctx){const c=CLOUD.cfg||{};const pre=!!(c.url&&c.key);
   return `<form onsubmit="event.preventDefault();A.cloudLogin('${ctx}',false)">
    <label class="f" ${pre?'style="display:none"':''}>Endereço do projeto (Project URL)<input id="cU-${ctx}" value="${esc(c.url||'')}" placeholder="https://xxxx.supabase.co" autocomplete="off"></label>
    <label class="f" ${pre?'style="display:none"':''}>Chave publicável (sb_publishable_…)<input id="cK-${ctx}" value="${esc(c.key||'')}" placeholder="sb_publishable_..." autocomplete="off"></label>
-   ${pre&&ctx==='gate'?`<div class="mut small">Projeto: ${esc(c.url)} · <a href="#" style="color:var(--silver)" onclick="event.preventDefault();CLOUD.cfg={};clSaveCfg();showGate()">trocar</a></div>`:''}
+   ${pre&&ctx==='gate'?`<div class="mut small">Projeto: ${esc(c.url)} · <a href="#" style="color:var(--silver)" onclick="event.preventDefault();CLOUD.cfg={email:CLOUD.cfg.email||''};clSaveCfg();showGate()">trocar</a></div>`:''}
    <label class="f">E-mail<input id="cE-${ctx}" type="email" value="${esc(c.email||'')}" autocomplete="username"></label>
    <label class="f">Senha<input id="cP-${ctx}" type="password" autocomplete="current-password"></label>
    <div class="row"><button class="btn red" type="submit">Entrar</button><button class="btn ghost" type="button" onclick="A.cloudLogin('${ctx}',true)">Criar conta</button></div>
@@ -1061,7 +1069,8 @@ function sessionHTML(){
    ${D.entries.map((e,ei)=>{const ex=exById(e.exId);const all=e.sets.length&&e.sets.every(s=>s.done);return `<div class="exblock ${all?'complete':''}"><div class="exwrap"><div class="exfig">${ex?figSVG(musclesOf(ex),{fibers:false,views:['front','back']}):''}</div><div style="flex:1;min-width:0">
      <div class="exhead"><span class="nm">${esc(exName(e.exId))}</span>${ex?`<span class="badge">${ex.group}</span>`:''}
        <span class="mut small">alvo ${esc(e.target||'—')} reps · descanso ${fmtSec(e.rest)}</span>${e.sug&&e.sug.w!=null?`<span class="badge ${e.sug.up?'red':''}" title="${esc(e.sug.why)}">${e.sug.up?'▲ ':''}sugerido ${fmtN(e.sug.w)} kg</span>`:''}<span class="sp"></span>
-       ${IS_WEB?`<button class="btn sm ghost" onclick="A.tQuick(${e.rest||90})">⏱ ${fmtSec(e.rest||90)}</button>`:''}<button class="btn sm danger icon" title="Remover exercício da sessão" onclick="A.delEntry(${ei})">✕</button></div>
+       ${IS_WEB?`<button class="btn sm ghost" onclick="A.tQuick(${e.rest||90})">⏱ ${fmtSec(e.rest||90)}</button>`:''}<button class="btn sm ghost" title="Trocar por um exercício equivalente" onclick="A.subOpen(${ei})">⇄ Trocar</button><button class="btn sm danger icon" title="Remover exercício da sessão" onclick="A.delEntry(${ei})">✕</button></div>
+     ${e.subFor&&exById(e.subFor)?`<div class="mut small" style="margin:-2px 0 6px">Substituindo <b style="color:var(--silver)">${esc(exName(e.subFor))}</b></div>`:''}
      <table class="t"><tr><th style="width:60px">Série</th><th>Carga (kg)</th><th>Reps</th><th>1RM est.</th><th style="width:60px">Feito</th></tr>
      ${e.sets.map((s,si)=>`<tr class="${s.done?'done':''}"><td>${si+1}</td>
        <td><input type="number" step="0.5" min="0" value="${s.w}" onchange="A.setSet(${ei},${si},'w',this.value)"></td>
@@ -1390,6 +1399,24 @@ function vTimer(){
    </div></div>`;
 }
 
+/* ---- substituição de exercício ---- */
+const MOVES=[['press',/supino|flexão de braço/i],['fly',/crucifixo|peck deck|crossover/i],['squat',/agachamento|leg press|hack|afundo|box squat/i],['ext',/extensora/i],
+ ['hinge',/terra|stiff|bom dia/i],['glute',/hip thrust|elevação pélvica|glúteo|abdução/i],['row',/remada|cavalinho/i],['pull',/barra fixa|puxada|pulldown/i],['ohp',/desenvolvimento/i],
+ ['lat',/elevação lateral/i],['front',/elevação frontal/i],['rear',/crucifixo invertido|face pull/i],['curl',/rosca (?!de punho)|rosca$/i],['tri',/tríceps|paralelas/i],
+ ['calf',/panturrilha/i],['lcurl',/flexora/i],['abs',/abdominal|prancha|elevação de pernas|roda/i],['grip',/punho|farmer/i]];
+const moveOf=n=>{for(const [k,re] of MOVES)if(re.test(n))return k;return null};
+function equivalents(exId){const ex=exById(exId);if(!ex)return[];const m=musclesOf(ex),mv=moveOf(ex.name);
+  return S.exercises.filter(x=>x.id!==exId&&(x.group!=='Cardio'||ex.group==='Cardio')).map(x=>{const mm=musclesOf(x);const pp=mm.p.filter(k=>m.p.includes(k)).length;
+    const ps=mm.p.filter(k=>m.s.includes(k)).length*0.5+mm.s.filter(k=>m.p.includes(k)).length*0.5+mm.s.filter(k=>m.s.includes(k)).length*0.25;
+    const sm=mv&&moveOf(x.name)===mv?5:0;const sg=x.group===ex.group?1:0;
+    return{x,score:sm+pp*3+ps+sg,pp,sg,sm}}).filter(c=>c.sm||c.pp>0||c.sg).sort((a,b)=>b.score-a.score||a.x.name.localeCompare(b.x.name))}
+function subItemHTML(ei,x){const m=musclesOf(x),lw=lastWeight(x.id);
+  return `<div class="exc" style="cursor:pointer;margin-bottom:8px" onclick="A.subDo(${ei},'${x.id}')"><div class="excrow"><div class="excfig" style="width:70px">${figSVG(m,{fibers:false,title:false,views:['front','back']})}</div>
+   <div style="flex:1;min-width:0"><div class="nm">${esc(x.name)}</div><div class="row" style="gap:6px;margin-top:5px"><span class="badge red">${x.group}</span><span class="badge">${esc(x.equip||'—')}</span>${lw?`<span class="badge">última: ${fmtN(lw)} kg</span>`:''}</div>
+   <div class="mus"><b>${esc(mNames(m.p))}</b>${m.s.length?' · '+esc(mNames(m.s)):''}</div></div></div></div>`}
+function subListHTML(ei){const q=(UI.subQ||'').trim().toLowerCase();const e=S.draft.entries[ei];
+  if(q){const xs=S.exercises.filter(x=>x.id!==e.exId&&x.name.toLowerCase().includes(q)).sort((a,b)=>a.name.localeCompare(b.name));return xs.length?xs.map(x=>subItemHTML(ei,x)).join(''):'<div class="empty">Nenhum exercício encontrado.</div>'}
+  const eq=equivalents(e.exId);return eq.length?eq.slice(0,14).map(c=>subItemHTML(ei,c.x)).join(''):'<div class="empty">Nenhum equivalente no catálogo. Use a busca.</div>'}
 /* ============ Exercícios ============ */
 function usedIn(exId){const r=[];S.programs.forEach(p=>p.days.forEach(d=>{if(d.items.some(i=>i.exId===exId))r.push((S.programs.length>1?p.name+' · ':'')+d.name.split('—')[0].trim())}));return r}
 function exFiltered(){
@@ -1532,6 +1559,20 @@ const A={
     save();render()},
   addSet(ei){const e=S.draft.entries[ei],l=e.sets[e.sets.length-1];e.sets.push({w:l?l.w:'',r:'',done:false});save();render()},
   delSet(ei){const e=S.draft.entries[ei];if(e.sets.length>1)e.sets.pop();save();render()},
+  subOpen(ei){const D=S.draft,e=D.entries[ei];UI.subQ='';const day=findDay(D.dayId);const inProg=day&&day.items.some(i=>i.exId===e.exId);const done=e.sets.filter(x=>x.done).length;
+    showModal(`<h3>Trocar “${esc(exName(e.exId))}”</h3>
+     <p class="mut small" style="margin:-6px 0 10px">Equivalentes que trabalham os mesmos músculos, os mais parecidos primeiro.${done?` As ${done} séries já feitas ficam registradas no exercício original; as restantes passam para o novo.`:''}</p>
+     <input placeholder="Buscar outro exercício..." oninput="UI.subQ=this.value;$('#subList').innerHTML=subListHTML(${ei})" style="width:100%;margin-bottom:10px">
+     ${inProg?`<label class="tg" style="margin-bottom:10px"><input type="checkbox" id="subPerm">Trocar também no programa (vale para os próximos treinos de “${esc(day.name)}”)</label>`:''}
+     <div id="subList" style="max-height:52vh;overflow:auto">${subListHTML(ei)}</div>
+     <div class="row end" style="margin-top:12px"><button class="btn ghost" onclick="closeModal()">Cancelar</button></div>`,true)},
+  subDo(ei,newId){const D=S.draft,e=D.entries[ei],oldId=e.exId;const perm=$('#subPerm')&&$('#subPerm').checked;
+    const done=e.sets.filter(x=>x.done),left=e.sets.filter(x=>!x.done);const n=Math.max(1,done.length?left.length:e.sets.length);
+    const it={exId:newId,sets:n,reps:e.target,rest:e.rest,load:''};const sg=sugFor(it,D.date);
+    const ne={exId:newId,rest:e.rest,target:e.target,subFor:e.subFor||oldId,sug:sg,sets:[...Array(n)].map(()=>({w:sg.w!=null?sg.w:'',r:'',done:false}))};
+    if(done.length&&left.length){e.sets=done;D.entries.splice(ei+1,0,ne)}else if(done.length){D.entries.splice(ei+1,0,ne)}else D.entries[ei]=ne;
+    if(perm){const day=findDay(D.dayId);if(day)day.items.forEach(i=>{if(i.exId===oldId){i.exId=newId;i.load=''}})}
+    save();closeModal();render();toast(`Trocado por ${exName(newId)}${perm?' (também no programa)':''}.`)},
   delEntry(ei){if(!confirm('Remover este exercício da sessão?'))return;S.draft.entries.splice(ei,1);save();render()},
   sessAddEx(){const id=$('#addExSel').value;if(!id)return;S.draft.entries.push({exId:id,rest:90,target:'8-12',sets:[0,1,2].map(()=>({w:lastWeight(id)??'',r:'',done:false}))});save();render()},
   sessNotes(v){S.draft.notes=v;save()},
