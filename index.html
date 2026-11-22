@@ -345,6 +345,11 @@ table.nut td{padding:6px 8px}table.nut tr.ng td{background:#101114;color:var(--s
 .sring{width:56px;height:56px;flex:none}.sring text{fill:var(--silver-hi);font-size:10.5px;font-weight:800;font-family:var(--fh)}
 .sprl{display:flex;flex-direction:column;gap:3px;font-size:12.5px;margin-top:6px;color:var(--silver)}.sprl b{color:var(--silver-hi);font-weight:600}
 @media (max-width:760px){.sstrip{flex-direction:column}.sseg{border-right:0;border-bottom:1px solid var(--line);padding:13px 16px}.sseg:last-child{border-bottom:0}.sbig{font-size:20px}.sring{width:46px;height:46px}}
+.row.pw .f input{width:100%}.goal2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.goal2>div{min-width:0}.goal2 p{margin:2px 0 10px}
+.g2h{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:6px}.g2h b{font-family:var(--fh);color:var(--silver-hi);font-size:14.5px;letter-spacing:.04em}
+.gl{padding:10px 0;border-bottom:1px solid #1d1f23}.gl:last-child{border-bottom:0}.gl-r{display:flex;gap:8px;align-items:center;margin-bottom:6px}.gl-r select{flex:1;min-width:0}
+.gl-r input{width:72px}.gl-r input.gl-reps{width:52px}.gl-v{font-family:var(--fh);color:var(--silver-hi);font-size:15px}.gl-p{font-family:var(--fh);color:var(--silver-hi)}
+@media (max-width:900px){.goal2{grid-template-columns:1fr}}
 /* Chart */
 .chart svg{display:block}
 .chart [data-c]{width:100%;overflow:hidden}
@@ -627,6 +632,11 @@ function normalize(){const d=seed();let mig=false;for(const k of Object.keys(d))
     const extra=DIET_PLANS.map(p=>({id:uid(),name:p.name,desc:p.desc,targets:clone(p.targets),meals:p.meals.map(m=>({id:uid(),...m}))}));
     S.diet.plans=[base,...extra];S.diet.trainPlanId=base.id;S.diet.restPlanId=extra[0].id;delete S.diet.meals;delete S.diet.targets;mig=true}
   if(!S.progV2){addExtraPrograms();S.progV2=true;mig=true}
+  if(!S.goalsV2){const bn=n=>(S.exercises.find(e=>e.name===n)||{}).id;S.goalsLift=S.goalsLift||[];
+    [['Agachamento no Smith',150],['Desenvolvimento militar com barra',70],['Puxada frente',120]].forEach(([n,t])=>{const id=bn(n);if(id&&!S.goals.some(g=>g.exId===id))S.goals.push({id:uid(),exId:id,target:t,base:''})});
+    [['Supino reto com barra',100,1],['Agachamento no Smith',140,5],['Agachamento livre com barra',160,1],['Levantamento terra',180,1],['Desenvolvimento militar com barra',60,5],['Puxada frente',90,10]].forEach(([n,t,r])=>{const id=bn(n);if(id&&!S.goalsLift.some(g=>g.exId===id))S.goalsLift.push({id:uid(),exId:id,target:t,reps:r})});
+    S.goalsV2=true;mig=true}
+  {const dd=(arr,key)=>{const seen=new Set();return arr.filter(g=>{const k=key(g);if(seen.has(k))return false;seen.add(k);return true})};const n1=S.goals.length,n2=(S.goalsLift||[]).length;S.goals=dd(S.goals,g=>g.exId+'|'+g.target);if(S.goalsLift)S.goalsLift=dd(S.goalsLift,g=>g.exId+'|'+g.target+'|'+g.reps);if(S.goals.length!==n1||(S.goalsLift||[]).length!==n2)mig=true}
   if(!S.exV2){EXTRA_EX.forEach(([n,g,eq,mm])=>{if(!S.exercises.some(e=>e.name===n))S.exercises.push({id:uid(),name:n,group:g,equip:eq,notes:'',muscles:parseM(mm)})});S.exV2=true;mig=true}
   if(!S.foods){S.foods=FOODS.map(f=>({id:uid(),...f}));mig=true}
   if(!S.dietV3){
@@ -723,6 +733,9 @@ function exHistory(exId){
   }));
   return out;
 }
+const lastOf=k=>{const ms=measSorted().filter(m=>m[k]!==''&&m[k]!=null);return ms.length?ms[ms.length-1]:null};
+function bestLift(exId,minR){let w=0,r=0,d='';sortedLogs().forEach(l=>l.entries.forEach(e=>{if(e.exId!==exId)return;let sets=e.sets.filter(x=>x.done&&x.w!==''&&x.r!==''&&x.w!=null&&x.r!=null);if(!sets.length)sets=e.sets.filter(x=>x.w!==''&&x.r!==''&&x.w!=null&&x.r!=null);
+  sets.forEach(x=>{if(+x.r>=(minR||1)&&(+x.w>w||(+x.w===w&&+x.r>r))){w=+x.w;r=+x.r;d=l.date}})}));return{w,r,d}}
 const bestE1rm=exId=>{const h=exHistory(exId);return h.length?Math.max(...h.map(x=>x.e1rm)):0};
 function lastWeight(exId){
   const ls=sortedLogs().reverse();
@@ -1022,7 +1035,7 @@ function vPainel(){
    </div>
    <div class="card"><h3>Corpo <span class="r"><button class="btn sm ghost" onclick="go('perfil')">Medidas</button></span></h3>
      ${lm?`<div class="row"><div class="big">${fmtN(lm.peso,1)}<small>kg</small></div>${dpeso!=null?`<span class="delta ${dpeso<0?'down':dpeso>0?'up':''}">${dpeso>0?'+':''}${fmtN(dpeso,1)} kg desde ${fmtDM(fm.date)}</span>`:''}</div>
-     <div class="mut small" style="margin:4px 0 8px">Cintura ${fmtN(lm.cintura,1)} cm · última medição ${fmtD(lm.date)}</div>
+     <div class="mut small" style="margin:4px 0 8px">${lastOf('cintura')?`Cintura ${fmtN(lastOf('cintura').cintura,1)} cm · `:''}última medição ${fmtD(lm.date)}</div>
      ${lineChart([{name:'Peso',color:'#e0182d',points:ms.filter(m=>m.peso!=='').map(m=>({x:m.date,y:m.peso}))}],{h:150,unit:'kg',empty:'Adicione medições para ver a curva.'})}`:'<div class="empty">Sem medições.</div>'}
    </div>
    <div class="card"><h3>Dieta hoje <span class="r"><button class="btn sm ghost" onclick="A.pdfDiet(today())">PDF</button><button class="btn sm ghost" onclick="UI.dietDate=today();go('dieta')">Abrir</button></span></h3>
@@ -1777,7 +1790,7 @@ function vProgramas(){
 /* ============ Perfil ============ */
 function vPerfil(){
   const pr=S.profile,ms=measSorted(),lm=ms[ms.length-1],fm=ms[0];
-  const imc=lm&&pr.altura?lm.peso/Math.pow(pr.altura/100,2):null,rca=lm&&pr.altura?lm.cintura/pr.altura:null;
+  const imc=lm&&pr.altura?lm.peso/Math.pow(pr.altura/100,2):null,rca=lastOf('cintura')&&pr.altura?lastOf('cintura').cintura/pr.altura:null;
   const f=MEAS.find(x=>x[0]===UI.measField);
   return `<div class="grid g3">
    <div class="card"><h3>Informações pessoais</h3>
@@ -1796,18 +1809,36 @@ function vPerfil(){
      ${ms.slice().reverse().map(m=>`<tr><td><input type="date" value="${m.date}" onchange="A.measEdit('${m.id}','date',this.value)"></td>${MEAS.map(([k])=>`<td><input type="number" step="0.1" value="${m[k]}" onchange="A.measEdit('${m.id}','${k}',this.value)"></td>`).join('')}<td><button class="btn sm danger icon" onclick="A.measDel('${m.id}')">✕</button></td></tr>`).join('')}</table>
      <p class="mut small">Meça sempre relaxado, pela manhã. Cintura na altura do umbigo. Peso: use a média da semana.</p>
    </div>
+   <div class="card"><h3>Peso atual</h3>
+     ${(()=>{const lp=lastOf('peso'),ms2=measSorted().filter(m=>m.peso!==''&&m.peso!=null),prev=ms2.length>1?ms2[ms2.length-2]:null,dl=lp&&prev?lp.peso-prev.peso:null;
+       return `<div class="row"><div class="big">${lp?fmtN(lp.peso,1):'—'}<small>kg</small></div>${dl!=null?`<span class="delta ${dl<0?'down':dl>0?'up':''}">${dl>0?'+':''}${fmtN(dl,1)} kg</span>`:''}</div>
+       <div class="mut small" style="margin:2px 0 12px">${lp?`pesado em ${fmtD(lp.date)}`:'nenhum peso registrado'}</div>`})()}
+     <div class="row pw"><label class="f" style="flex:1">Novo peso (kg)<input id="pwW" type="number" step="0.1" inputmode="decimal" placeholder="ex.: 93,4" onkeydown="if(event.key==='Enter')A.weighIn()"></label><label class="f">Data<input id="pwD" type="date" value="${today()}"></label></div>
+     <button class="btn red" style="margin-top:10px;width:100%" onclick="A.weighIn()">Atualizar peso</button>
+     <p class="mut small" style="margin:10px 0 0">Atualiza o peso usado no IMC, no ranking de transformações, nos gráficos e no Painel. Se já houver medição nesse dia, só o peso é trocado.</p>
+     <div style="margin-top:14px">${lineChart([{name:'Peso',color:'#e0182d',points:measSorted().filter(m=>m.peso!==''&&m.peso!=null).slice(-12).map(m=>({x:m.date,y:m.peso}))}],{h:200,unit:'kg',empty:'Registre o peso para ver a curva.'})}</div>
+   </div>
+   <div class="card span2"><h3>Metas de força</h3>
+     <div class="goal2">
+      <div><div class="g2h"><b>1RM estimado</b><button class="btn sm ghost" onclick="A.goalAdd()">+ Meta</button></div>
+       <p class="mut small">Calculado a partir das suas séries (carga × repetições), mesmo sem testar a carga máxima.</p>
+       ${S.goals.map(g=>{const cur=Math.max(bestE1rm(g.exId),+g.base||0);const pc=g.target?Math.min(100,cur/g.target*100):0;return `<div class="gl">
+        <div class="gl-r"><select onchange="A.goalEdit('${g.id}','exId',this.value)">${exOptions(g.exId)}</select><button class="btn sm danger icon" onclick="A.goalDel('${g.id}')">✕</button></div>
+        <div class="gl-r"><span class="gl-v">${cur?fmtN(cur,1)+' kg':'—'}</span><span class="mut small">de</span><input type="number" value="${g.target}" onchange="A.goalEdit('${g.id}','target',this.value)"><span class="mut small">kg</span><span class="sp"></span><b class="gl-p">${Math.round(pc)}%</b></div>
+        <div class="bar" style="margin:0"><div class="tr"><div class="fl" style="width:${pc}%"></div></div></div></div>`}).join('')||'<div class="empty">Nenhuma meta.</div>'}</div>
+      <div><div class="g2h"><b>Peso levantado</b><button class="btn sm ghost" onclick="A.goalLAdd()">+ Meta</button></div>
+       <p class="mut small">A maior carga que você realmente levantou, com pelo menos as repetições da meta.</p>
+       ${(S.goalsLift||[]).map(g=>{const b=bestLift(g.exId,+g.reps||1);const pc=g.target?Math.min(100,b.w/g.target*100):0;return `<div class="gl">
+        <div class="gl-r"><select onchange="A.goalLEdit('${g.id}','exId',this.value)">${exOptions(g.exId)}</select><button class="btn sm danger icon" onclick="A.goalLDel('${g.id}')">✕</button></div>
+        <div class="gl-r"><span class="gl-v">${b.w?fmtN(b.w,1)+' kg × '+b.r:'—'}</span><span class="mut small">de</span><input type="number" value="${g.target}" onchange="A.goalLEdit('${g.id}','target',this.value)"><span class="mut small">kg ×</span><input type="number" min="1" class="gl-reps" value="${g.reps||1}" onchange="A.goalLEdit('${g.id}','reps',this.value)"><span class="sp"></span><b class="gl-p">${Math.round(pc)}%</b></div>
+        <div class="bar" style="margin:0"><div class="tr"><div class="fl" style="width:${pc}%"></div></div></div>${b.d?`<div class="mut small" style="margin-top:4px">em ${fmtD(b.d)}</div>`:''}</div>`}).join('')||'<div class="empty">Nenhuma meta.</div>'}</div>
+     </div>
+   </div>
    <div class="card"><h3>Bloco e lembretes</h3>
      ${(()=>{const b=blockWeek(today());return b?`<div class="big" style="font-size:24px">Semana ${b.over?b.weeks:b.wk} <small>de ${b.weeks} · Bloco ${b.n}</small></div>`:''})()}
      <div class="row" style="margin-top:10px"><label class="f">Início do bloco<input type="date" value="${S.block.start}" onchange="A.blockSet('start',this.value)"></label><label class="f">Semanas<input type="number" min="2" value="${S.block.weeks}" style="width:70px" onchange="A.blockSet('weeks',this.value)"></label><label class="f">Bloco nº<input type="number" min="1" value="${S.block.n}" style="width:70px" onchange="A.blockSet('n',this.value)"></label></div>
      <label class="f" style="margin-top:10px">Lembrar de pesar e medir a cada<select onchange="A.measEvery(this.value)">${[7,10,14].map(d=>`<option value="${d}" ${+S.settings.measEvery===d?'selected':''}>${d} dias</option>`).join('')}</select></label>
      <p class="mut small" style="margin:10px 0 0">A última semana do bloco é a semana leve. As cargas sugeridas caem 10% e o Painel avisa quando chegar a hora de reavaliar.</p>
-   </div>
-   <div class="card span2"><h3>Metas de força <span class="r"><button class="btn sm ghost" onclick="A.goalAdd()">+ Meta</button></span></h3>
-     <table class="t"><tr><th>Exercício</th><th>Meta (kg)</th><th>1RM atual</th><th>Progresso</th><th></th></tr>
-     ${S.goals.map(g=>{const cur=Math.max(bestE1rm(g.exId),+g.base||0);const pc=g.target?Math.min(100,cur/g.target*100):0;return `<tr><td><select onchange="A.goalEdit('${g.id}','exId',this.value)" style="max-width:260px">${exOptions(g.exId)}</select></td>
-       <td><input type="number" value="${g.target}" onchange="A.goalEdit('${g.id}','target',this.value)"></td><td>${cur?fmtN(cur,1)+' kg':'—'}</td>
-       <td style="width:30%"><div class="bar" style="margin:0"><div class="tr"><div class="fl" style="width:${pc}%"></div></div></div></td>
-       <td><button class="btn sm danger icon" onclick="A.goalDel('${g.id}')">✕</button></td></tr>`}).join('')}</table>
    </div>
    <div class="card span2 syncbox"><h3>Sincronização na nuvem</h3>${syncCardHTML()}</div>
    <div class="card"><h3>Dados e backup</h3>
@@ -2040,6 +2071,13 @@ const A={
   goalAdd(){S.goals.push({id:uid(),exId:S.exercises[0].id,target:100,base:''});save();render()},
   goalEdit(id,k,v){const g=S.goals.find(x=>x.id===id);g[k]=k==='exId'?v:(+v||0);if(k==='exId')g.base='';save();render()},
   goalDel(id){S.goals=S.goals.filter(g=>g.id!==id);save();render()},
+  goalLAdd(){(S.goalsLift=S.goalsLift||[]).push({id:uid(),exId:S.exercises[0].id,target:100,reps:1});save();render()},
+  goalLEdit(id,k,v){const g=S.goalsLift.find(x=>x.id===id);g[k]=k==='exId'?v:(+v||(k==='reps'?1:0));save();render()},
+  goalLDel(id){S.goalsLift=S.goalsLift.filter(g=>g.id!==id);save();render()},
+  weighIn(){const w=num($('#pwW').value),d=$('#pwD').value||today();if(!w||w<30||w>300)return toast('Digite um peso válido em kg.');
+    const before=rankAll().rs.map(r=>r.lvl);const m=S.meas.find(x=>x.date===d);
+    if(m)m.peso=w;else S.meas.push({id:uid(),date:d,...Object.fromEntries(MEAS.map(([k])=>[k,k==='peso'?w:'']))});
+    save();render();const up=rankAll().rs.filter((r,i)=>r.lvl>before[i]&&r.lvl>0);toast(up.length?`Peso atualizado: ${fmtN(w,1)} kg. ⚡ Transformação! ${up.map(r=>r.L.label+': '+FORMS[r.lvl].n).join(' · ')}`:`Peso atualizado: ${fmtN(w,1)} kg.`,up.length?6000:2200)},
   exportData(){const b=new Blob([JSON.stringify(S,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`shape-backup-${today()}.json`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);toast('Backup exportado para a pasta de downloads.')},
   importData(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.exercises||!d.programs)throw 0;if(!confirm('Substituir todos os dados atuais por este backup?'))return;S=d;normalize();save();render();toast('Backup importado.')}catch(e){toast('Arquivo de backup inválido.')}inp.value=''};r.readAsText(f)},
   resetAll(){if(!confirm('Apagar TODOS os dados e voltar ao plano inicial? Exporte um backup antes.'))return;S=seed();normalize();save();render();toast('Dados reiniciados.')}
