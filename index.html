@@ -309,6 +309,42 @@ table.prog td{padding:6px 4px}table.prog input{width:100%!important}table.prog .
   .hC{min-height:calc(100vh - 170px)}.hC-title{font-size:54px}.hC-sub{font-size:12px;letter-spacing:.5em}.hC-today{font-size:17px;padding:0 10px}
   .hC-tiles{grid-template-columns:1fr 1fr;padding:0 4px;margin-top:28px}.hC-tile{padding:14px}
 }
+/* Biblioteca */
+.libimg{width:96px;height:72px;object-fit:cover;border-radius:8px;flex:none;background:#fff}
+.exc.lib .libdet{border-top:1px solid var(--line);padding-top:8px;font-size:12.5px;color:var(--silver)}.exc.lib .libdet ol{padding-left:18px;margin:8px 0}.exc.lib .libdet li{margin:4px 0}
+.exc.lib .libdet img{width:48%;border-radius:8px;background:#fff}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}.seg button{background:none;border:0;padding:7px 12px;color:var(--mut);cursor:pointer;font-family:var(--fh);font-size:13px}.seg button.on{background:var(--redgrad);color:#fff}
+/* Nutrientes */
+table.nut td{padding:6px 8px}table.nut tr.ng td{background:#101114;color:var(--silver-lo);font-family:var(--fh);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding-top:9px}
+.nt{font-size:10px;color:var(--mut);border:1px solid var(--line2);border-radius:8px;padding:0 5px;margin-left:4px}.warn{color:#e0a020}
+.nbar{height:8px;border-radius:6px;background:#202227;overflow:hidden}.nbar i{display:block;height:100%;border-radius:6px}
+/* Open Food Facts */
+.offp{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:#121316}
+.offp img,.offp .noimg{width:58px;height:58px;object-fit:contain;border-radius:8px;background:#fff;flex:none}.offp .noimg{display:grid;place-items:center;font-size:10px;color:#888}
+.offp .nm{font-family:var(--fh);color:var(--silver-hi);font-size:14.5px}
+#scanBox video{width:100%;max-height:260px;border-radius:12px;background:#000;margin:8px 0}
+/* Ranking */
+.form{display:inline-block;font-family:var(--fh);font-size:11px;letter-spacing:.06em;padding:3px 10px;border-radius:20px;color:#111;background:var(--fc);box-shadow:0 0 12px color-mix(in srgb,var(--fc) 60%,transparent);font-weight:700;white-space:nowrap}
+.form.none{background:#26292e;color:var(--mut);box-shadow:none}.form.big{font-size:14px;padding:5px 14px}
+.rk-top{display:flex;gap:20px;justify-content:space-between;align-items:center;padding:16px 18px;border-radius:14px;border:1px solid color-mix(in srgb,var(--fc) 45%,var(--line));background:radial-gradient(500px 160px at 0% 0%,color-mix(in srgb,var(--fc) 22%,transparent),transparent 70%),#121316;margin-bottom:14px;flex-wrap:wrap}
+.rk-form{font-family:var(--fh);font-size:32px;font-weight:700;color:var(--fc);text-shadow:0 0 18px color-mix(in srgb,var(--fc) 70%,transparent);margin:4px 0}
+.rk-pl{text-align:right}.rk-pl b{font-family:var(--fh);font-size:30px;color:var(--silver-hi);display:block}
+.rk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.rk{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:linear-gradient(180deg,color-mix(in srgb,var(--fc) 9%,#15161a),#121316)}
+.rk-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.rk-h b{font-family:var(--fh);font-size:15px;color:var(--silver-hi)}
+.rk-v{font-size:13px;color:var(--silver);margin:6px 0}.rk-n{font-size:11.5px;color:var(--mut)}.rk-n b{color:var(--silver-hi)}
+.rk-bar{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin:6px 0}.rk-bar i{height:7px;border-radius:3px;background:#24272c;position:relative;overflow:hidden}
+.rk-bar i.on{background:var(--c);opacity:.85}.rk-bar i.cur{outline:1px solid var(--c)}.rk-bar u{position:absolute;left:0;top:0;bottom:0;background:var(--c);text-decoration:none}
+.rk-tab{margin-top:14px}.rk-tab summary{cursor:pointer;color:var(--silver);font-size:13px}.rk-tab table{margin-top:10px}
+@media (max-width:760px){.cols.dcols{gap:0}.cols.dcols>.col{display:contents}.cols.dcols .card{margin-bottom:18px}.dside>.card{order:2}.dside>.card.dcal{order:0}.dmain>*{order:1}.libimg{width:76px;height:60px}.rk-form{font-size:26px}.rk-pl{text-align:left}}
+.sstrip{display:flex;padding:0!important;overflow:hidden;align-items:stretch}
+.sseg{flex:1;display:flex;align-items:center;gap:14px;padding:16px 20px;border-right:1px solid var(--line);min-width:0}.sseg:last-child{border-right:0}.sseg.grow{flex:1.3}
+.sseg.warn{background:linear-gradient(90deg,rgba(224,24,45,.13),transparent 85%)}.sseg.warn .k{color:#ff6b78}
+.sbody{flex:1;min-width:0}.sbody .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.sbig{font-family:var(--fh);font-size:24px;font-weight:700;color:var(--silver-hi);line-height:1.1;margin-top:3px}.stx{font-size:12px;color:var(--mut);margin-top:3px}
+.sring{width:56px;height:56px;flex:none}.sring text{fill:var(--silver-hi);font-size:10.5px;font-weight:800;font-family:var(--fh)}
+.sprl{display:flex;flex-direction:column;gap:3px;font-size:12.5px;margin-top:6px;color:var(--silver)}.sprl b{color:var(--silver-hi);font-weight:600}
+@media (max-width:760px){.sstrip{flex-direction:column}.sseg{border-right:0;border-bottom:1px solid var(--line);padding:13px 16px}.sseg:last-child{border-bottom:0}.sbig{font-size:20px}.sring{width:46px;height:46px}}
 /* Chart */
 .chart svg{display:block}
 .chart [data-c]{width:100%;overflow:hidden}
@@ -335,7 +371,7 @@ table.prog td{padding:6px 4px}table.prog input{width:100%!important}table.prog .
 <div class="app">
   <aside class="side">
     <div class="brand">
-      <svg viewBox="0 0 48 48"><defs><linearGradient id="lgm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f7f9"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#959ca5"/><stop offset="1" stop-color="#e9ecef"/></linearGradient></defs><path d="M24 3l18 7v12c0 11-8 19-18 23C14 41 6 33 6 22V10z" fill="url(#lgm)"/><path d="M24 8l13 5v9c0 8-6 14-13 17-7-3-13-9-13-17v-9z" fill="#141518"/><path d="M15 20v8M33 20v8M18.5 17.5v13M29.5 17.5v13M18.5 24h11" stroke="#e0182d" stroke-width="3" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 48 48"><defs><linearGradient id="lgm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f7f9"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#959ca5"/><stop offset="1" stop-color="#e9ecef"/></linearGradient></defs><defs><linearGradient id="lgr1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4558"/><stop offset="1" stop-color="#a50c1c"/></linearGradient></defs><path d="M24 2.5c1.6 6.5 8.4 9.6 10.6 16.4 1.6 5-.2 9.6-1.4 11.6 2.6-1 4.5-3.6 5-6.4 2 3 2.6 6.4 2 9.4C38.8 41 32 46 24 46S9.2 41 8.8 33.5c-.6-3 0-6.4 2-9.4.5 2.8 2.4 5.4 5 6.4-1.2-2-3-6.6-1.4-11.6C16.6 12.1 22.4 9 24 2.5z" fill="url(#lgr1)"/><path d="M24 17c1 3.6 4.6 5.6 5.4 9.2.9 4-1.8 8.3-5.4 8.3s-6.3-4.3-5.4-8.3c.8-3.6 4.4-5.6 5.4-9.2z" fill="#141518" opacity=".5"/><rect x="4.5" y="35.8" width="39" height="2.6" rx="1.3" fill="url(#lgm)" stroke="#141518" stroke-width=".7"/><rect x="7.5" y="31" width="3.6" height="12" rx="1.1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/><rect x="11.4" y="32.5" width="2.8" height="9" rx="1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/><rect x="36.9" y="31" width="3.6" height="12" rx="1.1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/><rect x="33.8" y="32.5" width="2.8" height="9" rx="1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/></svg>
       <div><div class="t1">SHAPE</div><div class="t2">INEXPLICÁVEL</div></div>
     </div>
     <div id="nav"></div>
@@ -591,6 +627,7 @@ function normalize(){const d=seed();let mig=false;for(const k of Object.keys(d))
     const extra=DIET_PLANS.map(p=>({id:uid(),name:p.name,desc:p.desc,targets:clone(p.targets),meals:p.meals.map(m=>({id:uid(),...m}))}));
     S.diet.plans=[base,...extra];S.diet.trainPlanId=base.id;S.diet.restPlanId=extra[0].id;delete S.diet.meals;delete S.diet.targets;mig=true}
   if(!S.progV2){addExtraPrograms();S.progV2=true;mig=true}
+  if(!S.exV2){EXTRA_EX.forEach(([n,g,eq,mm])=>{if(!S.exercises.some(e=>e.name===n))S.exercises.push({id:uid(),name:n,group:g,equip:eq,notes:'',muscles:parseM(mm)})});S.exV2=true;mig=true}
   if(!S.foods){S.foods=FOODS.map(f=>({id:uid(),...f}));mig=true}
   if(!S.dietV3){
     FOODS2.forEach(f=>{const ex=foodByName(f.name);if(ex){if(!ex.cat)ex.cat=f.cat}else S.foods.push({id:uid(),...f})});
@@ -651,7 +688,7 @@ function cloudFormHTML(ctx){const c=CLOUD.cfg||{};const pre=!!(c.url&&c.key);
    <div class="row"><button class="btn red" type="submit">Entrar</button><button class="btn ghost" type="button" onclick="A.cloudLogin('${ctx}',true)">Criar conta</button></div>
    <div class="small" id="cErr-${ctx}" style="color:#ff8d99"></div></form>`}
 function showGate(){let g=$('#gate');if(!g){g=document.createElement('div');g.id='gate';g.className='gate';document.body.appendChild(g)}
-  g.innerHTML=`<div class="box"><svg viewBox="0 0 48 48" width="64" height="64"><defs><linearGradient id="lgm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f7f9"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#959ca5"/><stop offset="1" stop-color="#e9ecef"/></linearGradient></defs><path d="M24 3l18 7v12c0 11-8 19-18 23C14 41 6 33 6 22V10z" fill="url(#lgm2)"/><path d="M24 8l13 5v9c0 8-6 14-13 17-7-3-13-9-13-17v-9z" fill="#141518"/><path d="M15 20v8M33 20v8M18.5 17.5v13M29.5 17.5v13M18.5 24h11" stroke="#e0182d" stroke-width="3" stroke-linecap="round"/></svg>
+  g.innerHTML=`<div class="box"><svg viewBox="0 0 48 48" width="64" height="64"><defs><linearGradient id="lgm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f7f9"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#959ca5"/><stop offset="1" stop-color="#e9ecef"/></linearGradient></defs><defs><linearGradient id="lgr2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4558"/><stop offset="1" stop-color="#a50c1c"/></linearGradient></defs><path d="M24 2.5c1.6 6.5 8.4 9.6 10.6 16.4 1.6 5-.2 9.6-1.4 11.6 2.6-1 4.5-3.6 5-6.4 2 3 2.6 6.4 2 9.4C38.8 41 32 46 24 46S9.2 41 8.8 33.5c-.6-3 0-6.4 2-9.4.5 2.8 2.4 5.4 5 6.4-1.2-2-3-6.6-1.4-11.6C16.6 12.1 22.4 9 24 2.5z" fill="url(#lgr2)"/><path d="M24 17c1 3.6 4.6 5.6 5.4 9.2.9 4-1.8 8.3-5.4 8.3s-6.3-4.3-5.4-8.3c.8-3.6 4.4-5.6 5.4-9.2z" fill="#141518" opacity=".5"/><rect x="4.5" y="35.8" width="39" height="2.6" rx="1.3" fill="url(#lgm2)" stroke="#141518" stroke-width=".7"/><rect x="7.5" y="31" width="3.6" height="12" rx="1.1" fill="url(#lgm2)" stroke="#141518" stroke-width=".8"/><rect x="11.4" y="32.5" width="2.8" height="9" rx="1" fill="url(#lgm2)" stroke="#141518" stroke-width=".8"/><rect x="36.9" y="31" width="3.6" height="12" rx="1.1" fill="url(#lgm2)" stroke="#141518" stroke-width=".8"/><rect x="33.8" y="32.5" width="2.8" height="9" rx="1" fill="url(#lgm2)" stroke="#141518" stroke-width=".8"/></svg>
    <h1>Shape Inexplicável</h1><p>Entre com a mesma conta usada no PC para sincronizar treinos, dieta e medidas.</p>${cloudFormHTML('gate')}</div>`}
 
 async function fileBoot(){
@@ -660,7 +697,7 @@ async function fileBoot(){
   if(ok){if(local){try{local.savedAt=Date.now();delete local._seedOnly;await fetch(SERVER+'/api/import',{method:'POST',body:JSON.stringify(local)})}catch(e){}}location.replace(SERVER+'/');return}
   window.exportLocal=()=>{const b=new Blob([JSON.stringify(local,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='shape-dados-antigos.json';document.body.appendChild(a);a.click()};
   document.body.insertAdjacentHTML('beforeend',`<div class="gate"><div class="box">
-    <svg viewBox="0 0 48 48" width="72" height="72"><path d="M24 3l18 7v12c0 11-8 19-18 23C14 41 6 33 6 22V10z" fill="url(#lgm)"/><path d="M24 8l13 5v9c0 8-6 14-13 17-7-3-13-9-13-17v-9z" fill="#141518"/><path d="M15 20v8M33 20v8M18.5 17.5v13M29.5 17.5v13M18.5 24h11" stroke="#e0182d" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 48 48" width="72" height="72"><defs><linearGradient id="lgr3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4558"/><stop offset="1" stop-color="#a50c1c"/></linearGradient></defs><path d="M24 2.5c1.6 6.5 8.4 9.6 10.6 16.4 1.6 5-.2 9.6-1.4 11.6 2.6-1 4.5-3.6 5-6.4 2 3 2.6 6.4 2 9.4C38.8 41 32 46 24 46S9.2 41 8.8 33.5c-.6-3 0-6.4 2-9.4.5 2.8 2.4 5.4 5 6.4-1.2-2-3-6.6-1.4-11.6C16.6 12.1 22.4 9 24 2.5z" fill="url(#lgr3)"/><path d="M24 17c1 3.6 4.6 5.6 5.4 9.2.9 4-1.8 8.3-5.4 8.3s-6.3-4.3-5.4-8.3c.8-3.6 4.4-5.6 5.4-9.2z" fill="#141518" opacity=".5"/><rect x="4.5" y="35.8" width="39" height="2.6" rx="1.3" fill="url(#lgm)" stroke="#141518" stroke-width=".7"/><rect x="7.5" y="31" width="3.6" height="12" rx="1.1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/><rect x="11.4" y="32.5" width="2.8" height="9" rx="1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/><rect x="36.9" y="31" width="3.6" height="12" rx="1.1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/><rect x="33.8" y="32.5" width="2.8" height="9" rx="1" fill="url(#lgm)" stroke="#141518" stroke-width=".8"/></svg>
     <h1>Abra pelo atalho</h1>
     <p>Para os seus dados serem sempre os mesmos, o Shape Inexplicável abre só pelo atalho <b style="color:var(--silver-hi)">Shape Inexplicável</b> na área de trabalho.</p>
     ${local?`<p>Encontrei dados da versão anterior guardados neste navegador. Exporte e depois importe no app em Perfil › Dados e backup.</p><button class="btn red" onclick="exportLocal()">Exportar dados antigos</button>`:''}
@@ -943,7 +980,7 @@ const ICONS={
 const TABS=[['painel','Painel','Visão geral do dia'],['treinos','Treinos','Calendário de presença e registro das sessões'],['dieta','Dieta','Metas, refeições do dia e plano alimentar'],['graficos','Gráficos','Evolução de força, frequência, corpo e dieta'],['exercicios','Exercícios','Catálogo de exercícios — atribua cada um a um dia'],['programas','Programas','Edite os dias, exercícios, séries e cargas'],['perfil','Perfil','Informações pessoais, medidas e evolução']];
 TABS.unshift(['inicio','Início','Shape Inexplicável']);
 if(IS_WEB)TABS.splice(4,0,['timer','Timer','Cronômetro de descanso e intervalos']);
-const UI={presetEdit:null,pendingRender:false,foodCat:'',foodQ:'',mb:null,dietMonth:today().slice(0,7),planEdit:null,progTable:null,exMuscle:'',exSel:null,mm:{p:[],s:[]},tab:'inicio',calMonth:today().slice(0,7),dietDate:today(),measField:'peso',exGroup:'',exSearch:'',chartEx:null,progId:null};
+const UI={exMode:'meu',libLimit:36,libEq:'',libOpen:null,offSel:null,presetEdit:null,pendingRender:false,foodCat:'',foodQ:'',mb:null,dietMonth:today().slice(0,7),planEdit:null,progTable:null,exMuscle:'',exSel:null,mm:{p:[],s:[]},tab:'inicio',calMonth:today().slice(0,7),dietDate:today(),measField:'peso',exGroup:'',exSearch:'',chartEx:null,progId:null};
 function go(t){UI.tab=t;render();$('#view').scrollTop=0;window.scrollTo(0,0)}
 function render(){
   $('#nav').innerHTML=TABS.map(([k,n])=>`<button class="nav ${UI.tab===k?'on':''}" onclick="go('${k}')"><svg viewBox="0 0 24 24">${ICONS[k]}</svg>${n}</button>`).join('');
@@ -1038,18 +1075,23 @@ function prEvents(){const best={},ev=[];sortedLogs().forEach(l=>{l.entries.forEa
 const prText=e=>e.kind==='1rm'?`${esc(exName(e.exId))}: ${fmtN(e.w)} kg × ${e.r} — 1RM estimado ${fmtN(e.v,1)} kg (antes ${fmtN(e.prev,1)})`:`${esc(exName(e.exId))}: maior carga ${fmtN(e.w)} kg (antes ${fmtN(e.prev)})`;
 function bestBefore(exId,date){let v=0;S.logs.forEach(l=>{if(l.date>=date)return;l.entries.forEach(e=>{if(e.exId!==exId)return;e.sets.forEach(x=>{if(x.w!==''&&x.r!==''&&x.w!=null&&x.r!=null)v=Math.max(v,e1rm(x.w,x.r))})})});return v}
 function alertsHTML(){
-  const t=today(),items=[];const b=blockWeek(t);
-  if(b){if(b.over)items.push(`<div class="alert red"><div><b>Bloco ${b.n} concluído.</b> Hora de reavaliar: teste de supino, medidas e fotos. Depois peça ao Claude o Bloco ${b.n+1}.</div><button class="btn sm red" onclick="A.newBlock()">Iniciar Bloco ${b.n+1}</button></div>`);
-    else if(b.deload)items.push(`<div class="alert red"><div><b>Semana ${b.wk} de ${b.weeks}: semana leve.</b> Faça metade das séries com cerca de 10% menos carga (as cargas sugeridas já vêm reduzidas). No fim da semana, teste o supino e faça a reavaliação.</div></div>`);
-    else items.push(`<div class="alert"><div><b>Bloco ${b.n} · semana ${b.wk} de ${b.weeks}.</b> ${b.weeks-b.wk===1?'Semana que vem é a semana leve.':`Faltam ${b.weeks-b.wk} semanas para a semana leve e a reavaliação.`}</div></div>`)}
+  const t=today(),segs=[];const b=blockWeek(t);
+  const ring=(n,tot,txt)=>`<svg class="sring" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#24272c" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="url(#sgr)" stroke-width="4" pathLength="${tot}" stroke-dasharray="${Math.min(n,tot)} ${tot}" transform="rotate(-90 20 20)" stroke-linecap="round"/><text x="20" y="24" text-anchor="middle">${txt}</text></svg>`;
+  const seg=(cls,k,big,tx,btn,pre)=>`<div class="sseg ${cls}">${pre||''}<div class="sbody"><div class="k">${k}</div><div class="sbig">${big}</div><div class="stx">${tx}</div></div>${btn||''}</div>`;
+  if(b){if(b.over)segs.push(seg('warn',`Bloco ${b.n} concluído`,'Reavaliar','teste de supino, medidas e fotos',`<button class="btn sm red" onclick="A.newBlock()">Iniciar Bloco ${b.n+1}</button>`,ring(b.weeks,b.weeks,'✓')));
+    else if(b.deload)segs.push(seg('warn',`Bloco ${b.n} · semana leve`,`Semana ${b.wk}`,'metade das séries, ~10% menos carga','',ring(b.wk,b.weeks,`${b.wk}/${b.weeks}`)));
+    else segs.push(seg('',`Bloco ${b.n}`,`Semana ${b.wk}`,b.weeks-b.wk===1?'semana que vem é a semana leve':`faltam ${b.weeks-b.wk} semanas para a semana leve`,'',ring(b.wk,b.weeks,`${b.wk}/${b.weeks}`)))}
   const ms=measSorted(),lm=ms[ms.length-1],every=+S.settings.measEvery||7;
   const dd=lm?Math.floor((parseD(t)-parseD(lm.date))/864e5):null;
-  if(!lm||dd>=every)items.push(`<div class="alert red"><div><b>Hora de pesar e medir.</b> ${lm?`Faz ${dd} dias desde a última medição (${fmtD(lm.date)}).`:'Nenhuma medição registrada.'} Pese-se de manhã, em jejum, e meça a cintura.</div><button class="btn sm red" onclick="A.goMeas()">Registrar medidas</button></div>`);
+  if(!lm||dd>=every)segs.push(seg('warn',lm?'Medidas atrasadas':'Sem medidas',lm?`${dd} dias`:'Comece hoje',lm?`desde ${fmtD(lm.date)} · pese em jejum`:'pese em jejum e meça a cintura',`<button class="btn sm red" onclick="A.goMeas()">Registrar</button>`));
+  else segs.push(seg('','Medidas em dia',dd===0?'Hoje':`${dd} dia${dd>1?'s':''}`,`próxima em ${every-dd} dia${every-dd>1?'s':''}`));
   const dId=plannedDayId(t),day=dId?findDay(dId):null;const rc=day?recoveryConflict(t,day.items.map(i=>i.exId)):null;
-  if(rc)items.push(`<div class="alert red"><div><b>Atenção à recuperação.</b> ${esc(mNames(rc.muscles))} ${rc.muscles.length>1?'foram trabalhados':'foi trabalhado'} ontem (${esc(rc.log.dayName)}). O ideal são 48 h para o mesmo músculo: considere trocar o treino de hoje.</div></div>`);
+  if(rc)segs.push(seg('warn','Recuperação','48 h',`${esc(mNames(rc.muscles))} treinado ontem: considere trocar o treino`));
   const allp=prEvents().filter(e=>e.date>=addDays(t,-7));
-  if(allp.length){const top=allp.slice().sort((a,b)=>b.v-a.v).slice(0,3);items.push(`<div class="alert pr"><span class="badge red">PR</span><div><b>${allp.length>1?allp.length+' recordes':'Novo recorde'} nos últimos 7 dias:</b> ${top.map(e=>`${esc(exName(e.exId))} ${fmtN(e.w)} kg${e.r?' × '+e.r:''}`).join(' · ')}${allp.length>3?` e mais ${allp.length-3}`:''}.</div><button class="btn sm ghost" onclick="go('graficos')">Ver recordes</button></div>`)}
-  return items.length?`<div class="card span3" style="padding:14px 16px">${items.join('')}</div>`:'';
+  if(allp.length){const top=allp.slice().sort((a,b)=>b.v-a.v).slice(0,3);
+    segs.push(`<div class="sseg grow"><div class="sbody"><div class="k">Recordes · 7 dias${allp.length>3?` · ${allp.length}`:''}</div><div class="sprl">${top.map(e=>`<div><b>${esc(exName(e.exId))}</b> ${fmtN(e.w)} kg${e.r?' × '+e.r:''}</div>`).join('')}</div></div><button class="btn sm ghost" onclick="go('graficos')">Ver</button></div>`)}
+  else segs.push(seg('','Recordes · 7 dias','—','nenhum recorde novo nesta semana'));
+  return `<div class="card span3 sstrip"><svg width="0" height="0" style="position:absolute"><defs><linearGradient id="sgr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3347"/><stop offset="1" stop-color="#b30f20"/></linearGradient></defs></svg>${segs.join('')}</div>`;
 }
 function recordsHTML(){
   const ids=[...new Set(S.logs.flatMap(l=>l.entries.map(e=>e.exId)))].filter(id=>exById(id));
@@ -1180,42 +1222,15 @@ function mealBlock(ctx,mi,m){
    <span class="sp"></span><span class="mut small">${ctx==='d'?`comido <b style="color:var(--silver-hi)">${fmtN(eat.kcal)}</b> de ${fmtN(tot.kcal)} kcal · ${fmtN(Math.round(eat.p))} de ${fmtN(Math.round(tot.p))} g prot.`:`${fmtN(tot.kcal)} kcal · ${fmtN(Math.round(tot.p))} P · ${fmtN(Math.round(tot.c))} C · ${fmtN(Math.round(tot.g))} G`}</span>
    ${ctx==='p'?`<button class="btn sm danger icon" title="Excluir refeição" onclick="A.mealDel('${m.id}')">✕</button>`:''}</div>
    ${m.items.map((it,ii)=>itemRow(ctx,mi,ii,it)).join('')||'<div class="mut small" style="padding:6px 4px">Sem alimentos.</div>'}
-   <div class="fadd"><input id="af-${ctx}-${mi}" list="foodList" placeholder="${ctx==='d'?'+ Comeu algo a mais? Busque no banco de alimentos':'+ Adicionar alimento do banco'}"><input id="aq-${ctx}-${mi}" type="number" min="0" placeholder="g / ml / un"><button class="btn sm ${ctx==='d'?'ghost':'ghost'}" onclick="A.fiAdd('${ctx}',${mi})">Adicionar</button></div></div>`;
+   <div class="fadd"><input id="af-${ctx}-${mi}" list="foodList" placeholder="${ctx==='d'?'+ Comeu algo a mais? Busque no banco de alimentos':'+ Adicionar alimento do banco'}"><input id="aq-${ctx}-${mi}" type="number" min="0" placeholder="g / ml / un"><button class="btn sm ghost" onclick="A.fiAdd('${ctx}',${mi})">Adicionar</button><button class="btn sm ghost" title="Buscar no Open Food Facts" onclick="A.offOpen('${ctx}',${mi})">Buscar online</button></div></div>`;
 }
 function vDieta(){
   const d=UI.dietDate,v=dayView(d),tt=dietTotals(d),dp=dayPlan(d),tg=dp.targets;
   if(!UI.planEdit||!planById(UI.planEdit))UI.planEdit=dp.id;const ep=planById(UI.planEdit),mt=planTotals(ep),et=ep.targets;
   const auto=!(S.dietLog[d]&&S.dietLog[d].planId),edited=!!(S.dietLog[d]&&S.dietLog[d].meals);
-  return `${foodOptions()}<div class="cols">
-  <div class="col" style="flex:1">
-   <div class="card"><h3>Dia <span class="r"><button class="btn sm ghost" onclick="A.pdfDiet(UI.dietDate)">Exportar PDF</button><button class="btn sm ghost icon" onclick="A.dietNav(-1)">‹</button><input type="date" value="${d}" onchange="A.dietDate(this.value)"><button class="btn sm ghost icon" onclick="A.dietNav(1)">›</button></span></h3>
-     <div class="row" style="align-items:flex-end"><label class="f" style="flex:1">Plano de dieta do dia${auto?` <span class="small">(automático: dia ${plannedDayId(d)?'de treino':'de descanso'})</span>`:''}
-       <select onchange="A.dayPlan(this.value)">${S.diet.plans.map(p=>`<option value="${p.id}" ${p.id===dp.id?'selected':''}>${esc(p.name)} — ${fmtN(p.targets.kcal)} kcal</option>`).join('')}</select></label>
-       ${edited?`<button class="btn sm ghost" title="Desfaz as trocas deste dia e volta ao plano original" onclick="A.dayReset()">Restaurar do plano</button>`:''}</div>
-     <div class="row" style="margin:12px 0 6px"><span class="mut small">Cumpriu a dieta neste dia?</span><span class="sp"></span>${adhButtons(d)}</div>
-     <div class="bars2">${bar('Calorias comidas',tt.kcal,tg.kcal,'kcal')}${bar('Proteína',tt.p,tg.p,'g')}${bar('Carboidrato',tt.c,tg.c,'g')}${bar('Gordura',tt.g,tg.g,'g')}</div>
-     <p class="mut small" style="margin:6px 0 4px">Marque ✓ em cada alimento que comeu. Na caixinha você troca por outro alimento do mesmo tipo (proteína por proteína, carboidrato por carboidrato...) e a quantidade é ajustada para manter as calorias; depois é só editar a quantidade que os macros acompanham. As mudanças valem só para este dia.</p>
-     ${v.meals.map((m,mi)=>mealBlock('d',mi,m)).join('')}
-   </div>
-   <div class="card"><h3>Planos de dieta (modelos) <span class="r"><button class="btn sm ghost" onclick="A.planNew()">+ Novo plano</button><button class="btn sm ghost" onclick="A.planDup()">Duplicar</button><button class="btn sm danger" onclick="A.planDel()">Excluir</button></span></h3>
-     <div class="chips" style="margin-bottom:14px">${S.diet.plans.map(p=>`<button class="chip ${p.id===ep.id?'on':''}" onclick="A.planSel('${p.id}')">${esc(p.name)}</button>`).join('')}</div>
-     <div class="row" style="align-items:flex-end"><label class="f" style="flex:1">Nome do plano<input value="${esc(ep.name)}" onchange="A.planField('name',this.value)"></label>
-       ${[['kcal','kcal'],['p','Prot. (g)'],['c','Carbo (g)'],['g','Gord. (g)']].map(([k,n])=>`<label class="f">Meta ${n}<input type="number" value="${et[k]}" style="width:80px" onchange="A.planTarget('${k}',this.value)"></label>`).join('')}</div>
-     <label class="f" style="margin-top:8px">Descrição<input value="${esc(ep.desc||'')}" onchange="A.planField('desc',this.value)"></label>
-     ${ep.meals.map((m,mi)=>mealBlock('p',mi,m)).join('')}
-     <div class="row" style="margin-top:10px"><button class="btn sm ghost" onclick="A.mealAdd()">+ Refeição</button><span class="sp"></span>
-       <span class="small"><b style="color:var(--silver-hi)">Total do plano: ${fmtN(mt.kcal)} kcal · ${fmtN(Math.round(mt.p))} P · ${fmtN(Math.round(mt.c))} C · ${fmtN(Math.round(mt.g))} G</b> <span class="mut">(meta ${fmtN(et.kcal)} kcal · ${fmtN(et.p)} P · ${fmtN(et.c)} C · ${fmtN(et.g)} G)</span></span></div>
-     <p class="mut small" style="margin:8px 0 0">Mudanças aqui alteram o modelo e valem para os dias que ainda não foram editados.</p>
-   </div>
-   <div class="card"><h3>Banco de alimentos <span class="r">${S.foods.length} alimentos <button class="btn sm ghost" onclick="A.foodAdd()">+ Alimento</button></span></h3>
-     <div class="row" style="margin-bottom:10px"><input placeholder="Buscar alimento..." value="${esc(UI.foodQ)}" oninput="A.foodSearch(this.value)" style="flex:1">
-       <select onchange="UI.foodCat=this.value;$('#foodTbl').innerHTML=foodTableHTML()"><option value="">Todos os tipos</option>${FOOD_CATS.map(c=>`<option ${UI.foodCat===c?'selected':''}>${c}</option>`).join('')}</select></div>
-     <div id="foodTbl" style="max-height:460px;overflow:auto">${foodTableHTML()}</div>
-     <p class="mut small" style="margin:10px 0 0">Valores aproximados por porção (100 g, 100 ml ou 1 unidade). O tipo define com quais alimentos cada um pode ser trocado na dieta.</p>
-   </div>
-  </div>
-  <div class="col" style="flex:0 0 400px">
-   <div class="card">${dietCalHTML()}</div>
+  return `${foodOptions()}<div class="cols dcols">
+  <div class="col dside" style="flex:0 0 400px">
+   <div class="card dcal">${dietCalHTML()}</div>
    <div class="card"><h3>Escolha automática</h3>
      <label class="f">Dia de treino<select onchange="A.autoPlan('trainPlanId',this.value)">${S.diet.plans.map(p=>`<option value="${p.id}" ${p.id===S.diet.trainPlanId?'selected':''}>${esc(p.name)}</option>`).join('')}</select></label>
      <label class="f" style="margin-top:8px">Dia de descanso<select onchange="A.autoPlan('restPlanId',this.value)">${S.diet.plans.map(p=>`<option value="${p.id}" ${p.id===S.diet.restPlanId?'selected':''}>${esc(p.name)}</option>`).join('')}</select></label>
@@ -1226,6 +1241,34 @@ function vDieta(){
    </div>
    <div class="card"><h3>Comendo fora ou de marmita</h3>
      <ul class="exlist" style="margin:0"><li>Metade do prato com salada e legumes</li><li>Proteína do tamanho de 1,5 palma da mão</li><li>Carboidrato do tamanho de um punho fechado</li><li>Grelhados e assados no lugar de fritos e molhos cremosos; refrigerante só zero</li></ul>
+   </div>
+  </div>
+  <div class="col dmain" style="flex:1">
+   <div class="card"><h3>Dia <span class="r"><button class="btn sm ghost" onclick="A.pdfDiet(UI.dietDate)">Exportar PDF</button><button class="btn sm ghost icon" onclick="A.dietNav(-1)">‹</button><input type="date" value="${d}" onchange="A.dietDate(this.value)"><button class="btn sm ghost icon" onclick="A.dietNav(1)">›</button></span></h3>
+     <div class="row" style="align-items:flex-end"><label class="f" style="flex:1">Plano de dieta do dia${auto?` <span class="small">(automático: dia ${plannedDayId(d)?'de treino':'de descanso'})</span>`:''}
+       <select onchange="A.dayPlan(this.value)">${S.diet.plans.map(p=>`<option value="${p.id}" ${p.id===dp.id?'selected':''}>${esc(p.name)} — ${fmtN(p.targets.kcal)} kcal</option>`).join('')}</select></label>
+       ${edited?`<button class="btn sm ghost" title="Desfaz as trocas deste dia e volta ao plano original" onclick="A.dayReset()">Restaurar do plano</button>`:''}</div>
+     <div class="row" style="margin:12px 0 6px"><span class="mut small">Cumpriu a dieta neste dia?</span><span class="sp"></span>${adhButtons(d)}</div>
+     <div class="bars2">${bar('Calorias comidas',tt.kcal,tg.kcal,'kcal')}${bar('Proteína',tt.p,tg.p,'g')}${bar('Carboidrato',tt.c,tg.c,'g')}${bar('Gordura',tt.g,tg.g,'g')}</div>
+     <p class="mut small" style="margin:6px 0 4px">Marque ✓ em cada alimento que comeu. Na caixinha você troca por outro alimento do mesmo tipo (proteína por proteína, carboidrato por carboidrato...) e a quantidade é ajustada para manter as calorias; depois é só editar a quantidade que os macros acompanham. As mudanças valem só para este dia.</p>
+     ${v.meals.map((m,mi)=>mealBlock('d',mi,m)).join('')}
+   </div>
+   <div class="card"><h3>Nutrientes do dia <span class="r">${fmtD(d)}</span></h3>${nutrientsHTML(d)}</div>
+   <div class="card"><h3>Planos de dieta (modelos) <span class="r"><button class="btn sm ghost" onclick="A.planNew()">+ Novo plano</button><button class="btn sm ghost" onclick="A.planDup()">Duplicar</button><button class="btn sm danger" onclick="A.planDel()">Excluir</button></span></h3>
+     <div class="chips" style="margin-bottom:14px">${S.diet.plans.map(p=>`<button class="chip ${p.id===ep.id?'on':''}" onclick="A.planSel('${p.id}')">${esc(p.name)}</button>`).join('')}</div>
+     <div class="row" style="align-items:flex-end"><label class="f" style="flex:1">Nome do plano<input value="${esc(ep.name)}" onchange="A.planField('name',this.value)"></label>
+       ${[['kcal','kcal'],['p','Prot. (g)'],['c','Carbo (g)'],['g','Gord. (g)']].map(([k,n])=>`<label class="f">Meta ${n}<input type="number" value="${et[k]}" style="width:80px" onchange="A.planTarget('${k}',this.value)"></label>`).join('')}</div>
+     <label class="f" style="margin-top:8px">Descrição<input value="${esc(ep.desc||'')}" onchange="A.planField('desc',this.value)"></label>
+     ${ep.meals.map((m,mi)=>mealBlock('p',mi,m)).join('')}
+     <div class="row" style="margin-top:10px"><button class="btn sm ghost" onclick="A.mealAdd()">+ Refeição</button><span class="sp"></span>
+       <span class="small"><b style="color:var(--silver-hi)">Total do plano: ${fmtN(mt.kcal)} kcal · ${fmtN(Math.round(mt.p))} P · ${fmtN(Math.round(mt.c))} C · ${fmtN(Math.round(mt.g))} G</b> <span class="mut">(meta ${fmtN(et.kcal)} kcal · ${fmtN(et.p)} P · ${fmtN(et.c)} C · ${fmtN(et.g)} G)</span></span></div>
+     <p class="mut small" style="margin:8px 0 0">Mudanças aqui alteram o modelo e valem para os dias que ainda não foram editados.</p>
+   </div>
+   <div class="card"><h3>Banco de alimentos <span class="r">${S.foods.length} alimentos <button class="btn sm red" onclick="A.offOpen()">Buscar no Open Food Facts</button><button class="btn sm ghost" onclick="A.foodAdd()">+ Alimento</button></span></h3>
+     <div class="row" style="margin-bottom:10px"><input placeholder="Buscar alimento..." value="${esc(UI.foodQ)}" oninput="A.foodSearch(this.value)" style="flex:1">
+       <select onchange="UI.foodCat=this.value;$('#foodTbl').innerHTML=foodTableHTML()"><option value="">Todos os tipos</option>${FOOD_CATS.map(c=>`<option ${UI.foodCat===c?'selected':''}>${c}</option>`).join('')}</select></div>
+     <div id="foodTbl" style="max-height:460px;overflow:auto">${foodTableHTML()}</div>
+     <p class="mut small" style="margin:10px 0 0">Valores aproximados por porção (100 g, 100 ml ou 1 unidade). O tipo define com quais alimentos cada um pode ser trocado na dieta.</p>
    </div>
   </div></div>`;
 }
@@ -1247,6 +1290,7 @@ function vGraficos(){
   // dieta
   const days=[...Array(14)].map((_,i)=>addDays(today(),i-13));const kc=days.map(d=>dietTotals(d).kcal);
   return `<div class="grid g2">
+   <div class="card span3"><h3>Transformações <span class="r">ranking de força pelo seu peso corporal</span></h3>${rankHTML()}</div>
    <div class="card span3"><h3>Força <span class="r"><select onchange="A.chartEx(this.value)">${list.map(id=>`<option value="${id}" ${id===UI.chartEx?'selected':''}>${esc(exName(id))}</option>`).join('')}</select></span></h3>
      <div class="row" style="margin-bottom:10px"><div class="stat"><b>${pr?fmtN(pr,1)+' kg':'—'}</b><span>Melhor 1RM estimado</span></div><div class="stat"><b>${prW?fmtN(prW,1)+' kg':'—'}</b><span>Maior carga</span></div><div class="stat"><b>${h.length}</b><span>Sessões registradas</span></div></div>
      ${lineChart([{name:'1RM estimado',color:'#e0182d',points:h.map(x=>({x:x.date,y:+x.e1rm.toFixed(1)}))},{name:'Maior carga',color:'#c9ced4',points:h.map(x=>({x:x.date,y:x.max}))}],{h:280,unit:'kg',goal:goal?+goal.target:null,empty:'Salve treinos com carga e repetições para ver sua evolução aqui.'})}
@@ -1479,7 +1523,7 @@ function ring(v,max,size,stroke,label,sub,color){const r=(size-stroke)/2,C=2*Mat
    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color||'url(#hrg)'}" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-f)}" transform="rotate(-90 ${size/2} ${size/2})" style="filter:drop-shadow(0 0 6px rgba(224,24,45,.45))"/></svg>
    <div class="rk-c"><b>${label}</b><span>${sub}</span></div></div>`}
 const HOME_DEFS='<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="hrg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4a5c"/><stop offset="1" stop-color="#a90f1e"/></linearGradient><linearGradient id="hsg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset="1" stop-color="#8d949c"/></linearGradient></defs></svg>';
-const SHIELD=(w)=>`<svg viewBox="0 0 48 48" width="${w}" height="${w}"><defs><linearGradient id="hsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f7f9"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#8f969f"/><stop offset="1" stop-color="#e9ecef"/></linearGradient></defs><path d="M24 1.5l20 7.5v13c0 12-9 20.5-20 25C13 42.5 4 34 4 22V9z" fill="url(#hsh)"/><path d="M24 6.5l15 5.6v10c0 9-6.6 15.5-15 19.2-8.4-3.7-15-10.2-15-19.2v-10z" fill="#141518"/><path d="M14.5 19.5v9M33.5 19.5v9M18.5 16.5v15M29.5 16.5v15M18.5 24h11" stroke="url(#hrg)" stroke-width="3.4" stroke-linecap="round"/></svg>`;
+const SHIELD=(w)=>`<svg viewBox="0 0 48 48" width="${w}" height="${w}"><defs><linearGradient id="hsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f7f9"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#8e959e"/><stop offset="1" stop-color="#e9ecef"/></linearGradient></defs><defs><linearGradient id="hfl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4558"/><stop offset="1" stop-color="#a50c1c"/></linearGradient></defs><path d="M24 2.5c1.6 6.5 8.4 9.6 10.6 16.4 1.6 5-.2 9.6-1.4 11.6 2.6-1 4.5-3.6 5-6.4 2 3 2.6 6.4 2 9.4C38.8 41 32 46 24 46S9.2 41 8.8 33.5c-.6-3 0-6.4 2-9.4.5 2.8 2.4 5.4 5 6.4-1.2-2-3-6.6-1.4-11.6C16.6 12.1 22.4 9 24 2.5z" fill="url(#hfl)"/><path d="M24 17c1 3.6 4.6 5.6 5.4 9.2.9 4-1.8 8.3-5.4 8.3s-6.3-4.3-5.4-8.3c.8-3.6 4.4-5.6 5.4-9.2z" fill="#141518" opacity=".5"/><rect x="4.5" y="35.8" width="39" height="2.6" rx="1.3" fill="url(#hsh)" stroke="#141518" stroke-width=".7"/><rect x="7.5" y="31" width="3.6" height="12" rx="1.1" fill="url(#hsh)" stroke="#141518" stroke-width=".8"/><rect x="11.4" y="32.5" width="2.8" height="9" rx="1" fill="url(#hsh)" stroke="#141518" stroke-width=".8"/><rect x="36.9" y="31" width="3.6" height="12" rx="1.1" fill="url(#hsh)" stroke="#141518" stroke-width=".8"/><rect x="33.8" y="32.5" width="2.8" height="9" rx="1" fill="url(#hsh)" stroke="#141518" stroke-width=".8"/></svg>`;
 function weekDots(H){return `<div class="hweek">${H.wk.map(x=>{const a=S.attendance[x],dd=S.dietAdh[x],pl=plannedDayId(x);
   return `<div class="hd ${x===H.t?'td':''}"><span>${WD[parseD(x).getDay()].slice(0,3)}</span><i class="dt ${a==='fui'?'on':a==='meio'?'half':a==='faltei'?'x':pl?'pl':''}" title="Treino"></i><i class="dd ${dd==='ok'?'on':dd==='meio'?'half':dd==='nok'?'x':''}" title="Dieta"></i></div>`}).join('')}</div>`}
 const trainTxt=H=>H.day?{t:'Treino de hoje',n:H.day.name,items:H.day.items}:H.nxt?{t:`Próximo treino · ${WD_LONG[parseD(H.nxtDate).getDay()].toLowerCase()}`,n:H.nxt.name,items:H.nxt.items}:{t:'Treino',n:'Sem treino programado',items:[]};
@@ -1488,7 +1532,7 @@ const measTxt=H=>!H.lm?'Nenhuma medição':H.since>=H.every?`Hora de medir (há 
 
 /* ---- Opção C: Capa ---- */
 function homeC(){const H=homeData(),T=trainTxt(H),kd=kgDelta(H);const best=H.goals[0];
-  const tiles=[['treinos','Treinos',`${fmtHalf(H.done)} de ${H.planned||4} na semana`],['dieta','Dieta',`${fmtN(Math.round(H.dt.kcal))} / ${fmtN(H.tg.kcal)} kcal hoje`],['graficos','Progresso',best&&best.cur?`${esc(best.name.split(' ')[0])} ${fmtN(Math.round(best.cur))} / ${fmtN(best.target)} kg`:'Gráficos e recordes'],['perfil','Corpo',H.lm?`${fmtN(H.lm.peso,1)} kg${kd!=null?` (${kd>0?'+':''}${fmtN(kd,1)})`:''}`:'Medidas']];
+  const tiles=[['treinos','Treinos',`${fmtHalf(H.done)} de ${H.planned||4} na semana`],['dieta','Dieta',`${fmtN(Math.round(H.dt.kcal))} / ${fmtN(H.tg.kcal)} kcal hoje`],['graficos','Progresso',(()=>{const R=rankAll();return R.overall>=0?`Forma: ${FORMS[R.overall].n}`:null})()||(best&&best.cur?`${esc(best.name.split(' ')[0])} ${fmtN(Math.round(best.cur))} / ${fmtN(best.target)} kg`:'Gráficos e recordes')],['perfil','Corpo',H.lm?`${fmtN(H.lm.peso,1)} kg${kd!=null?` (${kd>0?'+':''}${fmtN(kd,1)})`:''}`:'Medidas']];
   return `${HOME_DEFS}<div class="hC"><div class="hC-bg"></div>
    <div class="hC-cover">
      <div class="hC-logo">${SHIELD(108)}</div>
@@ -1500,6 +1544,176 @@ function homeC(){const H=homeData(),T=trainTxt(H),kd=kgDelta(H);const best=H.goa
    <div class="hC-tiles">${tiles.map(([k,n,s])=>`<button class="hC-tile" onclick="go('${k}')"><svg viewBox="0 0 24 24">${ICONS[k]}</svg><b>${n}</b><span>${s}</span></button>`).join('')}</div>
    <div class="hC-line">${H.line}</div></div>`}
 function vInicio(){return homeC()}
+const EXTRA_EX=[["Supino declinado com barra", "Peito", "Barra", "pec_mid|triceps,delt_ant"], ["Supino reto no Smith", "Peito", "Smith", "pec_mid|pec_upper,delt_ant,triceps"], ["Supino inclinado no Smith", "Peito", "Smith", "pec_upper|pec_mid,delt_ant,triceps"], ["Crucifixo inclinado com halteres", "Peito", "Halteres", "pec_upper|pec_mid,delt_ant"], ["Pullover com halter", "Peito", "Halteres", "pec_mid,lats|triceps,serratus"], ["Flexão inclinada", "Peito", "Peso corporal", "pec_mid|delt_ant,triceps"], ["Flexão declinada", "Peito", "Peso corporal", "pec_upper|delt_ant,triceps"], ["Chest press (máquina articulada)", "Peito", "Máquina", "pec_mid|delt_ant,triceps"], ["Barra fixa supinada", "Costas", "Peso corporal", "lats,biceps|rotator,forearm"], ["Puxada pegada fechada (triângulo)", "Costas", "Polia", "lats|biceps,trap"], ["Puxada supinada", "Costas", "Polia", "lats|biceps"], ["Remada articulada (máquina)", "Costas", "Máquina", "lats,trap|delt_post,biceps"], ["Remada no Smith", "Costas", "Smith", "lats,trap|delt_post,biceps,erectors"], ["Remada serrote com halter", "Costas", "Halteres", "lats|trap,delt_post,biceps"], ["Encolhimento com barra", "Costas", "Barra", "trap|forearm"], ["Encolhimento com halteres", "Costas", "Halteres", "trap|forearm"], ["Hiperextensão lombar", "Costas", "Banco", "erectors|glutes,hamstrings"], ["Remada alta", "Ombros", "Barra", "delt_lat,trap|biceps"], ["Desenvolvimento no Smith", "Ombros", "Smith", "delt_ant,delt_lat|triceps,trap"], ["Desenvolvimento Arnold", "Ombros", "Halteres", "delt_ant,delt_lat|triceps"], ["Desenvolvimento na máquina", "Ombros", "Máquina", "delt_ant,delt_lat|triceps"], ["Elevação lateral na máquina", "Ombros", "Máquina", "delt_lat|trap"], ["Crucifixo invertido com halteres", "Ombros", "Halteres", "delt_post|trap,rotator"], ["Rosca concentrada", "Bíceps", "Halteres", "biceps|forearm"], ["Rosca inversa", "Bíceps", "Barra", "forearm,biceps|"], ["Rosca com barra W", "Bíceps", "Barra W", "biceps|forearm"], ["Rosca inclinada com halteres", "Bíceps", "Halteres", "biceps|forearm"], ["Rosca no banco Scott com halter", "Bíceps", "Halteres", "biceps|forearm"], ["Tríceps coice (kickback)", "Tríceps", "Halteres", "triceps|"], ["Supino pegada fechada", "Tríceps", "Barra", "triceps,pec_mid|delt_ant"], ["Mergulho no banco", "Tríceps", "Peso corporal", "triceps|pec_mid,delt_ant"], ["Tríceps unilateral na polia", "Tríceps", "Polia", "triceps|"], ["Tríceps na máquina", "Tríceps", "Máquina", "triceps|"], ["Agachamento frontal", "Quadríceps", "Barra", "quads|glutes,abs,erectors"], ["Agachamento sumô", "Quadríceps", "Halteres", "adductors,glutes|quads,hamstrings"], ["Afundo no Smith", "Quadríceps", "Smith", "quads,glutes|hamstrings,adductors"], ["Passada (afundo andando)", "Quadríceps", "Halteres", "quads,glutes|hamstrings,adductors"], ["Avanço reverso", "Quadríceps", "Halteres", "quads,glutes|hamstrings"], ["Leg press unilateral", "Quadríceps", "Máquina", "quads|glutes,adductors"], ["Subida no banco (step-up)", "Quadríceps", "Halteres", "quads,glutes|hamstrings"], ["Cadeira adutora", "Quadríceps", "Máquina", "adductors|"], ["Agachamento no Smith com pés à frente", "Quadríceps", "Smith", "quads,glutes|adductors"], ["Levantamento terra sumô", "Posterior", "Barra", "glutes,quads,adductors|hamstrings,erectors,trap"], ["Terra com barra hexagonal", "Posterior", "Barra", "quads,glutes,hamstrings|erectors,trap,forearm"], ["Stiff com halteres", "Posterior", "Halteres", "hamstrings,glutes|erectors"], ["Flexora em pé", "Posterior", "Máquina", "hamstrings|calves"], ["Flexão nórdica", "Posterior", "Peso corporal", "hamstrings|glutes"], ["Ponte de glúteo", "Glúteos", "Peso corporal", "glutes|hamstrings"], ["Elevação pélvica no Smith", "Glúteos", "Smith", "glutes|hamstrings,glute_med"], ["Coice na máquina (glúteo)", "Glúteos", "Máquina", "glutes|hamstrings"], ["Panturrilha no Smith", "Panturrilha", "Smith", "calves|soleus"], ["Panturrilha unilateral com halter", "Panturrilha", "Halteres", "calves|soleus"], ["Abdominal infra", "Abdômen", "Peso corporal", "abs|obliques"], ["Abdominal oblíquo", "Abdômen", "Peso corporal", "obliques|abs"], ["Prancha lateral", "Abdômen", "Peso corporal", "obliques|abs"], ["Abdominal bicicleta", "Abdômen", "Peso corporal", "obliques,abs|"], ["Russian twist", "Abdômen", "Peso corporal", "obliques|abs"], ["Abdominal na máquina", "Abdômen", "Máquina", "abs|obliques"], ["Elevação de pernas deitado", "Abdômen", "Peso corporal", "abs|obliques"], ["Dead bug", "Abdômen", "Peso corporal", "abs|obliques"], ["Pular corda", "Cardio", "Corda", "calves,quads|delt_ant,forearm"], ["Remo ergômetro", "Cardio", "Máquina", "lats,quads|hamstrings,biceps,glutes"], ["Burpee", "Cardio", "Peso corporal", "quads,pec_mid|delt_ant,triceps,abs"]];
+/* ============ Biblioteca de exercícios (Free Exercise DB, domínio público) ============ */
+const FEDB_URL='https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json';
+const FEDB_IMG='https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
+const LIB={data:null,loading:false,err:''};
+const FEDB_M={abdominals:'abs',abductors:'glute_med',adductors:'adductors',biceps:'biceps',calves:'calves',chest:'pec_mid',forearms:'forearm',glutes:'glutes',hamstrings:'hamstrings',lats:'lats','lower back':'erectors','middle back':'trap',neck:'neck',quadriceps:'quads',shoulders:'delt_ant',traps:'trap',triceps:'triceps'};
+const FEDB_G={abdominals:'Abdômen',abductors:'Glúteos',adductors:'Quadríceps',biceps:'Bíceps',calves:'Panturrilha',chest:'Peito',forearms:'Antebraço',glutes:'Glúteos',hamstrings:'Posterior',lats:'Costas','lower back':'Costas','middle back':'Costas',neck:'Costas',quadriceps:'Quadríceps',shoulders:'Ombros',traps:'Costas',triceps:'Tríceps'};
+const FEDB_E={barbell:'Barra',dumbbell:'Halteres',cable:'Polia',machine:'Máquina','body only':'Peso corporal',kettlebells:'Kettlebell',bands:'Elástico','medicine ball':'Medicine ball','exercise ball':'Bola suíça','e-z curl bar':'Barra W','foam roll':'Rolo',other:'Outro'};
+const FEDB_L={beginner:'Iniciante',intermediate:'Intermediário',expert:'Avançado'};
+const FEDB_C={strength:'Força',stretching:'Alongamento',plyometrics:'Pliometria',strongman:'Strongman',powerlifting:'Powerlifting',cardio:'Cardio','olympic weightlifting':'Levantamento olímpico'};
+function fedbMuscle(m,name){if(m==='shoulders'){if(/lateral|side/i.test(name))return'delt_lat';if(/rear|reverse fly|face pull|reverse flye/i.test(name))return'delt_post'}return FEDB_M[m]||null}
+function fedbMap(x){const P=[...new Set((x.primaryMuscles||[]).map(m=>fedbMuscle(m,x.name)).filter(Boolean))];const Sx=[...new Set((x.secondaryMuscles||[]).map(m=>fedbMuscle(m,x.name)).filter(Boolean))].filter(m=>!P.includes(m));
+  if(P.includes('delt_ant')&&/press|overhead|military/i.test(x.name)&&!P.includes('delt_lat'))P.push('delt_lat');
+  return{p:P,s:Sx}}
+function fedbGroup(x){if(x.category==='cardio')return'Cardio';return FEDB_G[(x.primaryMuscles||[])[0]]||'Cardio'}
+const TR_CORE=[[/bench press/i,'Supino'],[/leg press/i,'Leg press'],[/leg extensions?/i,'Cadeira extensora'],[/leg curl/i,'Flexora'],[/romanian deadlift|rdl/i,'Stiff (terra romeno)'],[/stiff[- ]legged deadlift/i,'Stiff'],[/deadlift/i,'Levantamento terra'],
+ [/good ?morning/i,'Bom dia'],[/hip thrust/i,'Elevação pélvica'],[/glute bridge|butt lift|bridge/i,'Ponte de glúteo'],[/split squat/i,'Agachamento búlgaro'],[/hack squat/i,'Hack squat'],[/front squat/i,'Agachamento frontal'],[/squat/i,'Agachamento'],[/lunge/i,'Afundo'],[/step[- ]?up/i,'Subida no banco'],
+ [/calf raise|calf press/i,'Panturrilha'],[/pull[- ]?ups?|pullups?/i,'Barra fixa'],[/chin[- ]?ups?/i,'Barra fixa supinada'],[/pulldown|pull[- ]down/i,'Puxada'],[/face pull/i,'Face pull'],[/upright row/i,'Remada alta'],[/row/i,'Remada'],[/shrug/i,'Encolhimento'],
+ [/lateral raise|side lateral/i,'Elevação lateral'],[/front raise/i,'Elevação frontal'],[/reverse fly|reverse flye|rear delt/i,'Crucifixo invertido'],[/fly|flye/i,'Crucifixo'],[/crossover/i,'Crossover'],[/pullover/i,'Pullover'],
+ [/hammer curl/i,'Rosca martelo'],[/preacher curl/i,'Rosca Scott'],[/concentration curl/i,'Rosca concentrada'],[/wrist curl/i,'Rosca de punho'],[/curl/i,'Rosca'],
+ [/skull ?crusher|lying triceps extension/i,'Tríceps testa'],[/pushdown|push[- ]down/i,'Tríceps pulley'],[/kickback/i,'Tríceps coice'],[/dips?\b/i,'Paralelas'],[/triceps extension|tricep extension|overhead extension/i,'Tríceps francês'],
+ [/push[- ]?ups?|pushups?/i,'Flexão'],[/arnold press/i,'Desenvolvimento Arnold'],[/shoulder press|military press|overhead press/i,'Desenvolvimento'],[/clean and jerk/i,'Arremesso'],[/power clean|hang clean|clean/i,'Clean'],[/snatch/i,'Arranco'],
+ [/crunch/i,'Abdominal'],[/sit[- ]?up/i,'Abdominal'],[/plank/i,'Prancha'],[/leg raise/i,'Elevação de pernas'],[/russian twist/i,'Russian twist'],[/stretch/i,'Alongamento'],[/jump rope|rope jumping/i,'Pular corda'],
+ [/burpee/i,'Burpee'],[/press/i,'Press']];
+const TR_MOD=[[/incline/i,'inclinado'],[/decline/i,'declinado'],[/seated/i,'sentado'],[/standing/i,'em pé'],[/lying/i,'deitado'],[/one[- ]arm|single[- ]arm|one[- ]leg|single[- ]leg|unilateral/i,'unilateral'],[/alternat/i,'alternado'],
+ [/close[- ]grip|narrow/i,'pegada fechada'],[/wide[- ]grip/i,'pegada aberta'],[/reverse[- ]grip|underhand/i,'pegada supinada'],[/sumo/i,'sumô'],[/bent[- ]over/i,'curvada'],[/front/i,'frontal'],[/overhead/i,'acima da cabeça'],[/weighted/i,'com peso'],[/side|oblique/i,'lateral']];
+const TR_EQ=[[/smith/i,'no Smith'],[/cable/i,'na polia'],[/machine|lever/i,'na máquina'],[/e-?z bar|ez[- ]bar/i,'com barra W'],[/kettlebell/i,'com kettlebell'],[/dumbbell/i,'com halteres'],[/barbell/i,'com barra'],[/band/i,'com elástico'],[/medicine ball/i,'com medicine ball']];
+function ptName(x){const n=x.name;let core=null;for(const [re,pt] of TR_CORE)if(re.test(n)){core=pt;break}
+  if(!core)return n;if(core==='Press'){const pm=(x.primaryMuscles||[])[0];core=pm==='chest'?'Supino':pm==='shoulders'?'Desenvolvimento':pm==='triceps'?'Tríceps':pm==='quadriceps'?'Leg press':'Press'}
+  const mods=[];TR_MOD.forEach(([re,pt])=>{if(re.test(n)&&!core.toLowerCase().includes(pt)&&!mods.includes(pt))mods.push(pt)});
+  if(core==='Remada'&&mods.includes('curvada')){mods.splice(mods.indexOf('curvada'),1);core='Remada curvada'}
+  let eq='';for(const [re,pt] of TR_EQ)if(re.test(n)){eq=pt;break}
+  if(core==='Supino'&&mods.includes('frontal'))mods.splice(mods.indexOf('frontal'),1);
+  return [core,...mods,eq].filter(Boolean).join(' ')}
+async function libLoad(force){
+  if(LIB.data&&!force)return LIB.data;
+  if(!force){try{const c=JSON.parse(localStorage.getItem('shape.exlib')||'null');if(c&&c.d&&c.d.length){LIB.data=c.d;return LIB.data}}catch(e){}}
+  LIB.loading=true;LIB.err='';if(UI.tab==='exercicios')softRender();
+  try{const r=await fetch(FEDB_URL,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();
+    LIB.data=j.map(x=>({id:x.id,en:x.name,pt:ptName(x),g:fedbGroup(x),m:fedbMap(x),eq:FEDB_E[x.equipment]||x.equipment||'—',lv:FEDB_L[x.level]||x.level||'',cat:FEDB_C[x.category]||x.category||'',ins:x.instructions||[],img:x.images||[],mech:x.mechanic||''}));
+    try{localStorage.setItem('shape.exlib',JSON.stringify({t:Date.now(),d:LIB.data}))}catch(e){}
+  }catch(e){LIB.err='Não foi possível carregar a biblioteca. Verifique a internet e tente de novo.'}
+  LIB.loading=false;if(UI.tab==='exercicios')softRender();return LIB.data}
+function libFiltered(){if(!LIB.data)return[];const q=UI.exSearch.trim().toLowerCase();
+  return LIB.data.filter(x=>(!UI.exGroup||x.g===UI.exGroup)&&(!UI.exMuscle||x.m.p.includes(UI.exMuscle)||x.m.s.includes(UI.exMuscle))&&(!q||x.pt.toLowerCase().includes(q)||x.en.toLowerCase().includes(q))&&(!UI.libEq||x.eq===UI.libEq))
+   .sort((a,b)=>(UI.exMuscle?(b.m.p.includes(UI.exMuscle)-a.m.p.includes(UI.exMuscle)):0)||a.pt.localeCompare(b.pt))}
+function libListHTML(){
+  if(LIB.loading&&!LIB.data)return '<div class="empty">Carregando a biblioteca (800+ exercícios)…</div>';
+  if(LIB.err&&!LIB.data)return `<div class="empty">${LIB.err}<br><br><button class="btn" onclick="libLoad(true)">Tentar de novo</button></div>`;
+  if(!LIB.data){libLoad();return '<div class="empty">Carregando…</div>'}
+  const xs=libFiltered(),lim=UI.libLimit||36;const mine=new Set(S.exercises.map(e=>e.src).filter(Boolean));
+  if(!xs.length)return '<div class="empty">Nenhum exercício encontrado.</div>';
+  return `<div class="mut small" style="margin-bottom:10px">${xs.length} exercícios · nomes em português sugeridos automaticamente (o original em inglês aparece abaixo)</div>
+   <div class="excards">${xs.slice(0,lim).map(x=>`<div class="exc lib ${UI.libOpen===x.id?'sel':''}">
+    <div class="excrow">${x.img[0]?`<img class="libimg" loading="lazy" src="${FEDB_IMG+x.img[0]}" alt="">`:`<div class="excfig">${figSVG(x.m,{fibers:false,title:false,views:['front','back']})}</div>`}
+     <div style="flex:1;min-width:0"><div class="nm">${esc(x.pt)}</div><div class="mut small">${esc(x.en)}</div>
+     <div class="row" style="gap:6px;margin-top:6px"><span class="badge red">${x.g}</span><span class="badge">${esc(x.eq)}</span>${x.lv?`<span class="badge">${x.lv}</span>`:''}</div>
+     <div class="mus"><b>${esc(mNames(x.m.p))}</b>${x.m.s.length?' · '+esc(mNames(x.m.s)):''}</div></div></div>
+    ${UI.libOpen===x.id?`<div class="libdet">${x.img.length>1?`<div class="row" style="gap:6px">${x.img.map(i=>`<img loading="lazy" src="${FEDB_IMG+i}" alt="">`).join('')}</div>`:''}<ol>${x.ins.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><div class="mut small">Instruções em inglês · fonte: Free Exercise DB (domínio público)</div></div>`:''}
+    <div class="acts"><button class="btn sm ghost" onclick="A.libToggle('${esc(x.id)}')">${UI.libOpen===x.id?'Fechar':'Como fazer'}</button>${mine.has('fedb:'+x.id)?'<span class="badge red" style="align-self:center">no catálogo</span>':`<button class="btn sm red" onclick="A.libAdd('${esc(x.id)}')">+ Meu catálogo</button>`}</div></div>`).join('')}</div>
+   ${xs.length>lim?`<div class="row" style="justify-content:center;margin-top:14px"><button class="btn ghost" onclick="UI.libLimit=(UI.libLimit||36)+36;$('#exList').innerHTML=libListHTML()">Mostrar mais (${xs.length-lim})</button></div>`:''}`;
+}
+
+/* ============ Nutrientes completos + Open Food Facts ============ */
+const NUTR=[
+ ['fiber','Fibras','g','Macros','min',38,'fiber',1],['sugars','Açúcares totais','g','Macros',null,null,'sugars',1],['asugars','Açúcares adicionados','g','Macros','max',50,'added-sugars',1],
+ ['sat','Gordura saturada','g','Gorduras','max',null,'saturated-fat',1],['mufa','Gordura monoinsaturada','g','Gorduras',null,null,'monounsaturated-fat',1],['pufa','Gordura poli-insaturada','g','Gorduras',null,null,'polyunsaturated-fat',1],
+ ['o3','Ômega-3','g','Gorduras','min',1.6,'omega-3-fat',1],['trans','Gordura trans','g','Gorduras','max',2,'trans-fat',1],['chol','Colesterol','mg','Gorduras','max',300,'cholesterol',1000],
+ ['ca','Cálcio','mg','Minerais','min',1000,'calcium',1000],['mg','Magnésio','mg','Minerais','min',400,'magnesium',1000],['k','Potássio','mg','Minerais','min',3400,'potassium',1000],
+ ['na','Sódio','mg','Minerais','max',2300,'sodium',1000],['fe','Ferro','mg','Minerais','min',8,'iron',1000],['zn','Zinco','mg','Minerais','min',11,'zinc',1000],
+ ['p_','Fósforo','mg','Minerais','min',700,'phosphorus',1000],['cu','Cobre','mg','Minerais','min',0.9,'copper',1000],['mn','Manganês','mg','Minerais','min',2.3,'manganese',1000],['se','Selênio','mcg','Minerais','min',55,'selenium',1e6],
+ ['va','Vitamina A','mcg','Vitaminas','min',900,'vitamin-a',1e6],['vc','Vitamina C','mg','Vitaminas','min',90,'vitamin-c',1000],['vd','Vitamina D','mcg','Vitaminas','min',15,'vitamin-d',1e6],
+ ['ve','Vitamina E','mg','Vitaminas','min',15,'vitamin-e',1000],['vk','Vitamina K','mcg','Vitaminas','min',120,'vitamin-k',1e6],['b1','Tiamina (B1)','mg','Vitaminas','min',1.2,'vitamin-b1',1000],
+ ['b2','Riboflavina (B2)','mg','Vitaminas','min',1.3,'vitamin-b2',1000],['b3','Niacina (B3)','mg','Vitaminas','min',16,'vitamin-pp',1000],['b6','Vitamina B6','mg','Vitaminas','min',1.3,'vitamin-b6',1000],
+ ['b9','Folato (B9)','mcg','Vitaminas','min',400,'vitamin-b9',1e6],['b12','Vitamina B12','mcg','Vitaminas','min',2.4,'vitamin-b12',1e6]];
+function itemNut(it){if(it.custom)return null;const f=foodById(it.foodId);if(!f||!f.n)return null;const k=f.unit==='un'?(+it.qty||0):(+it.qty||0)/100;const o={};for(const key in f.n)o[key]=f.n[key]*k;return o}
+function dayNutrients(date){const items=dayView(date).meals.flatMap(m=>m.items).filter(i=>i.eaten);const tot={},miss={};
+  items.forEach(it=>{const n=itemNut(it);NUTR.forEach(([k])=>{if(n&&n[k]!=null)tot[k]=(tot[k]||0)+n[k];else miss[k]=(miss[k]||0)+1})});return{tot,miss,count:items.length}}
+function nutTarget(row,tg){if(row[0]==='sat')return Math.round(tg.kcal*0.1/9);return row[5]}
+function nutRowHTML(label,val,target,type,unit,miss,isMacro){
+  const pct=target?val/target*100:0;let col='#3b82f6';if(!isMacro&&type==='min')col=pct>=100?'#22a559':pct>=50?'#e0a020':'#e0182d';if(type==='max')col=pct>100?'#e0182d':pct>90?'#e0a020':'#22a559';
+  const dec=unit==='mcg'||val>=100?0:val>=10?1:2;
+  return `<tr><td>${label}${type?` <span class="nt">${type==='min'?'mín.':'máx.'}</span>`:''}</td><td class="num">${fmtN(val,dec)} ${unit}${miss?` <span class="warn" title="${miss} alimento(s) comido(s) sem este dado">⚠</span>`:''}</td><td class="num mut">${target?fmtN(target)+' '+unit:'—'}</td>
+   <td style="width:34%">${target?`<div class="nbar"><i style="width:${Math.min(100,pct)}%;background:${col}"></i></div>`:''}</td></tr>`}
+function nutrientsHTML(d){const tg=dayPlan(d).targets,dn=dayNutrients(d),tt=dietTotals(d),cnt=dn.count;
+  let h=`<table class="t nut"><tr><th>Nutriente</th><th class="num">Consumido</th><th class="num">Meta</th><th></th></tr>`;
+  h+=nutRowHTML('Calorias',tt.kcal,tg.kcal,null,'kcal',0,true)+nutRowHTML('Proteína',tt.p,tg.p,'min','g',0,false)+nutRowHTML('Carboidratos',tt.c,tg.c,null,'g',0,true)+nutRowHTML('Gordura total',tt.g,tg.g,null,'g',0,true);
+  let grp='Macros';NUTR.forEach(r=>{if(r[3]!==grp){grp=r[3];h+=`<tr class="ng"><td colspan="4">${grp}</td></tr>`}h+=nutRowHTML(r[1],dn.tot[r[0]]||0,nutTarget(r,tg),r[4],r[2],dn.miss[r[0]]||0,false)});
+  return h+`</table><p class="mut small" style="margin:8px 0 0">${cnt?`Soma dos ${cnt} alimentos marcados como comidos.`:'Marque os alimentos comidos para ver os totais.'} ⚠ = algum alimento comido não tem esse dado: o valor real é maior. Metas: recomendações diárias para homens de 19 a 30 anos; gordura saturada até 10% das calorias.</p>`}
+/* Open Food Facts */
+const OFF={busy:false,res:[],err:'',q:'',ctx:null,mi:null,br:true,last:0};
+const OFF_FIELDS='code,product_name,product_name_pt,generic_name_pt,generic_name,brands,quantity,serving_size,image_front_small_url,nutriments';
+const offHost=()=>OFF.br?'https://br.openfoodfacts.org':'https://world.openfoodfacts.org';
+function offName(p){return (p.product_name_pt||p.product_name||p.generic_name_pt||p.generic_name||'').trim()||'(sem nome)'}
+function offBrand(p){const b=Array.isArray(p.brands)?p.brands.join(', '):(p.brands||'');return b.split(',')[0].trim()}
+function offMacros(p){const n=p.nutriments||{};let kcal=n['energy-kcal_100g'];if(kcal==null&&n['energy_100g']!=null)kcal=n['energy_100g']/4.184;
+  return{kcal:Math.round(+kcal||0),p:+(+n.proteins_100g||0).toFixed(1),c:+(+n.carbohydrates_100g||0).toFixed(1),g:+(+n.fat_100g||0).toFixed(1),has:kcal!=null}}
+function offMicros(p){const n=p.nutriments||{},o={};NUTR.forEach(([k,,,,,,off,f])=>{const v=n[off+'_100g'];if(v!==undefined&&v!==''&&!isNaN(+v))o[k]=+(+v*f).toPrecision(4)});return o}
+function offCat(p,m){const nm=(offName(p)+' '+offBrand(p)).toLowerCase();
+  if(/refrigerante|suco|bebida|cerveja|água|energ[eé]tico|isot[oô]nico|ch[aá] /.test(nm))return'Bebida';
+  if(/leite|iogurte|queijo|requeij|coalhada|kefir/.test(nm))return'Laticínio';
+  if(/whey|prote[ií]na em p[oó]|creatina|suplemento/.test(nm))return m.p>=50?'Proteína':'Suplemento';
+  if(/salgadinho|chips|batata frita|pipoca|amendoim japon/.test(nm))return'Lanche / besteira';
+  if(/chocolate|biscoito|bolacha|bolo|doce|sorvete|wafer|bombom|bala|açúcar/.test(nm))return'Doce';
+  if(/molho|ketchup|maionese|mostarda|tempero/.test(nm))return'Molho / condimento';
+  if(m.p>=12&&m.p*4>=m.c*4*0.8)return'Proteína';if(m.g*9>m.c*4&&m.g*9>m.p*4)return'Gordura';if(m.c>m.p)return'Carboidrato';return'Outros'}
+async function offFetch(url){const now=Date.now();if(now-OFF.last<1200)await new Promise(r=>setTimeout(r,1200-(now-OFF.last)));OFF.last=Date.now();
+  const r=await fetch(url);if(r.status===429||r.status===503)throw new Error('O Open Food Facts limitou as buscas (máx. 10 por minuto). Espere um pouco e tente de novo.');if(!r.ok)throw new Error('Erro '+r.status+' no Open Food Facts');return r.json()}
+async function offSearch(q){q=q.trim();if(!q)return;OFF.q=q;OFF.busy=true;OFF.err='';OFF.res=[];offRender();
+  try{let ps=[];if(/^\d{8,14}$/.test(q)){const j=await offFetch(`${offHost()}/api/v2/product/${q}.json?fields=${OFF_FIELDS}`);if(j.status===1&&j.product)ps=[{...j.product,code:j.product.code||q}];else OFF.err='Código de barras não encontrado no Open Food Facts.'}
+    else{try{const j=await offFetch(`${offHost()}/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=30&sort_by=unique_scans_n&fields=${OFF_FIELDS}`);ps=j.products||[]}
+      catch(e){if(/limitou/.test(e.message))throw e;const j=await offFetch(`https://search.openfoodfacts.org/search?q=${encodeURIComponent(q)}&page_size=30&langs=pt&fields=${OFF_FIELDS}`);ps=j.hits||[]}}
+    OFF.res=ps.filter(p=>offMacros(p).has);if(!OFF.res.length&&!OFF.err)OFF.err=OFF.br?'Nada encontrado nos produtos do Brasil. Tente desmarcar “Só produtos do Brasil” ou outro termo.':'Nada encontrado. Tente outro termo.'}
+  catch(e){OFF.err=e.message&&/fetch|network|Failed/i.test(e.message)?'Sem conexão com o Open Food Facts.':e.message}
+  OFF.busy=false;offRender()}
+function offRender(){const el=$('#offRes');if(!el)return;
+  if(OFF.busy){el.innerHTML='<div class="empty">Buscando no Open Food Facts…</div>';return}
+  if(OFF.err&&!OFF.res.length){el.innerHTML=`<div class="empty">${esc(OFF.err)}</div>`;return}
+  el.innerHTML=OFF.res.map((p,i)=>{const m=offMacros(p),n=Object.keys(offMicros(p)).length,ex=S.foods.find(f=>f.off===p.code);
+    return `<div class="offp">${p.image_front_small_url?`<img loading="lazy" src="${esc(p.image_front_small_url)}" alt="">`:'<div class="noimg">sem foto</div>'}
+     <div style="flex:1;min-width:0"><div class="nm">${esc(offName(p))}</div><div class="mut small">${esc(offBrand(p))}${p.quantity?' · '+esc(p.quantity):''}</div>
+     <div class="small" style="margin-top:4px">Por 100 g/ml: <b>${fmtN(m.kcal)}</b> kcal · ${fmtN(m.p)} P · ${fmtN(m.c)} C · ${fmtN(m.g)} G <span class="mut">· +${n} nutrientes</span></div></div>
+     ${ex?'<span class="badge red">no banco</span>':`<button class="btn sm red" onclick="A.offPick(${i})">Adicionar</button>`}</div>`}).join('')||'<div class="empty">Busque um produto pelo nome ou código de barras.</div>'}
+async function scanStart(){
+  if(!('BarcodeDetector' in window))return toast('Este navegador não lê código de barras pela câmera. Digite o número.');
+  const box=$('#scanBox');try{const st=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});UI.scanStream=st;
+    box.innerHTML='<video id="scanV" playsinline autoplay muted></video><button class="btn sm ghost" onclick="scanStop()">Parar câmera</button>';const v=$('#scanV');v.srcObject=st;
+    const det=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e']});
+    const loop=async()=>{if(!UI.scanStream)return;try{const c=await det.detect(v);if(c.length){const code=c[0].rawValue;scanStop();$('#offQ').value=code;vib(80);offSearch(code);return}}catch(e){}requestAnimationFrame(loop)};loop()}
+  catch(e){toast('Não consegui abrir a câmera.')}}
+function scanStop(){if(UI.scanStream){UI.scanStream.getTracks().forEach(t=>t.stop());UI.scanStream=null}const b=$('#scanBox');if(b)b.innerHTML=''}
+
+/* ============ Ranking de força (transformações) ============ */
+const FORMS=[{n:'Base',c:'#9aa0a8'},{n:'Kaioken',c:'#ff3b3b'},{n:'Super Saiyajin',c:'#f5c542'},{n:'Super Saiyajin 2',c:'#ffd84d'},{n:'Super Saiyajin 3',c:'#f0a92e'},{n:'Super Saiyajin God',c:'#ff2d55'},{n:'Super Saiyajin Blue',c:'#3fb6ff'},{n:'Ultra Instinto',c:'#e6edf5'}];
+const RANK_LIFTS=[
+ {name:'Supino reto com barra',label:'Supino',type:'ratio',t:[0,.75,1,1.25,1.5,1.75,2,2.25]},
+ {name:'Agachamento livre com barra',label:'Agachamento',type:'ratio',t:[0,1,1.5,1.75,2,2.5,2.75,3]},
+ {name:'Levantamento terra',label:'Levantamento terra',type:'ratio',t:[0,1.25,1.75,2,2.25,2.75,3,3.25]},
+ {name:'Agachamento frontal',label:'Agachamento frontal',type:'ratio',t:[0,.75,1.125,1.375,1.625,1.9,2.15,2.4]},
+ {name:'Desenvolvimento militar com barra',label:'Desenvolvimento',type:'ratio',t:[0,.45,.6,.75,.9,1.05,1.2,1.35]},
+ {name:'Barra fixa',label:'Barra fixa',type:'reps',t:[0,3,5,10,15,20,25,30]},
+ {name:'Flexão de braço',label:'Flexão',type:'reps',t:[0,10,20,30,40,50,60,75]}];
+function bodyW(){const ms=measSorted().filter(m=>+m.peso>0);return ms.length?+ms[ms.length-1].peso:0}
+function maxReps(exId){let r=0;S.logs.forEach(l=>l.entries.forEach(e=>{if(e.exId!==exId)return;e.sets.forEach(s=>{if(s.r!==''&&s.r!=null&&(s.done||s.w===''||s.w==null||+s.w===0))r=Math.max(r,+s.r)})}));return r}
+function rankLift(L){const ex=S.exercises.find(e=>e.name===L.name);if(!ex)return{L,val:0,lvl:-1};const bw=bodyW();
+  const val=L.type==='reps'?maxReps(ex.id):bestE1rm(ex.id);if(!val||(L.type==='ratio'&&!bw))return{L,ex,val:0,lvl:-1};
+  const x=L.type==='reps'?val:val/bw;let lvl=0;L.t.forEach((th,i)=>{if(x>=th)lvl=i});const next=L.t[lvl+1];
+  const frac=next!=null?(x-L.t[lvl])/(next-L.t[lvl]):1;const need=next!=null?(L.type==='reps'?Math.ceil(next-x):Math.ceil((next*bw-val)/2.5)*2.5):0;
+  return{L,ex,val,x,lvl,frac,need,next}}
+function rankAll(){const rs=RANK_LIFTS.map(rankLift);
+  const main=rs.filter(r=>r.lvl>=0);const avg=main.length?main.reduce((a,r)=>a+r.lvl+Math.min(.99,r.frac),0)/main.length:0;
+  const bw=bodyW();const big=['Supino','Agachamento','Levantamento terra'].map(n=>rs.find(r=>r.L.label===n)).filter(r=>r&&r.val);
+  const power=bw?Math.round(big.reduce((a,r)=>a+r.val,0)/bw*1000):0;return{rs,overall:main.length?Math.floor(avg):-1,avg,power,bw}}
+const formBadge=(lvl,big)=>lvl<0?'<span class="form none">Sem dados</span>':`<span class="form ${big?'big':''}" style="--fc:${FORMS[lvl].c}">${FORMS[lvl].n}</span>`;
+function rankHTML(){const R=rankAll();
+  const cards=R.rs.map(r=>{const lv=r.lvl,L=r.L;const unit=L.type==='reps'?'reps':'kg';
+    const valTxt=r.val?(L.type==='reps'?`${r.val} reps`:`${fmtN(r.val,1)} kg · ${fmtN(r.x,2)}× peso`):'—';
+    const nx=lv>=0&&lv<FORMS.length-1?`faltam <b>${L.type==='reps'?r.need+' reps':fmtN(r.need)+' kg'}</b> para ${FORMS[lv+1].n}`:lv===FORMS.length-1?'Forma máxima alcançada':'Registre esse exercício para ganhar uma forma';
+    return `<div class="rk" style="--fc:${lv>=0?FORMS[lv].c:'#3a3e45'}"><div class="rk-h"><b>${L.label}</b>${formBadge(lv)}</div><div class="rk-v">${valTxt}</div>
+     <div class="rk-bar">${FORMS.map((f,i)=>`<i class="${i<lv?'on':i===lv?'cur':''}" style="--c:${f.c}">${i===lv&&lv<FORMS.length-1?`<u style="width:${Math.round(Math.max(0,Math.min(1,r.frac))*100)}%"></u>`:''}</i>`).join('')}</div>
+     <div class="rk-n">${nx}</div></div>`}).join('');
+  return `<div class="rk-top" style="--fc:${R.overall>=0?FORMS[R.overall].c:'#5c636c'}"><div><div class="hc-k">Forma atual</div><div class="rk-form">${R.overall>=0?FORMS[R.overall].n:'Base'}</div>
+     <div class="mut small">Média das suas formas nos exercícios registrados · peso corporal ${R.bw?fmtN(R.bw,1)+' kg':'—'}</div></div>
+     <div class="rk-pl"><div class="hc-k">Poder de luta</div><b>${fmtN(R.power)}</b><div class="mut small">(supino + agachamento + terra) ÷ peso × 1000</div></div></div>
+   <div class="rk-grid">${cards}</div>
+   <details class="rk-tab"><summary>Ver a tabela de transformações</summary>${rankTableHTML(R.bw)}</details>`}
+function rankTableHTML(bw){return `<table class="t"><tr><th>Forma</th>${RANK_LIFTS.map(L=>`<th class="num">${L.label}</th>`).join('')}</tr>
+  ${FORMS.map((f,i)=>`<tr><td>${formBadge(i)}</td>${RANK_LIFTS.map(L=>`<td class="num">${L.type==='reps'?L.t[i]+' reps':`${fmtN(L.t[i],2)}×${bw?`<div class="mut small">${fmtN(Math.round(L.t[i]*bw/2.5)*2.5)} kg</div>`:''}`}</td>`).join('')}</tr>`).join('')}</table>
+  <p class="mut small">Classe C da sua tabela = Super Saiyajin · Classe B = Super Saiyajin 2 · Classe A = Super Saiyajin 3. As formas acima de Super Saiyajin 3 seguem os padrões de força “avançado” e “elite”. Exercícios com carga usam o 1RM estimado ÷ peso corporal; barra fixa e flexão usam o máximo de repetições numa série.</p>`}
+
 /* ============ Exercícios ============ */
 function usedIn(exId){const r=[];S.programs.forEach(p=>p.days.forEach(d=>{if(d.items.some(i=>i.exId===exId))r.push((S.programs.length>1?p.name+' · ':'')+d.name.split('—')[0].trim())}));return r}
 function exFiltered(){
@@ -1511,12 +1725,12 @@ function exFiltered(){
 function exListHTML(){
   const xs=exFiltered();if(!xs.length)return '<div class="empty">Nenhum exercício encontrado.</div>';
   return `<div class="excards">${xs.map(e=>{const u=usedIn(e.id),m=musclesOf(e);return `<div class="exc ${UI.exSel===e.id?'sel':''}" onclick="A.exSel('${e.id}')" onmouseenter="A.exHover('${e.id}')" onmouseleave="A.exHover(null)">
-    <div class="excrow"><div class="excfig">${figSVG(m,{fibers:false,title:false,views:['front','back']})}</div><div style="flex:1;min-width:0"><div class="nm">${esc(e.name)}</div>
+    <div class="excrow">${e.img?`<img class="libimg" loading="lazy" src="${FEDB_IMG+e.img}" alt="">`:`<div class="excfig">${figSVG(m,{fibers:false,title:false,views:['front','back']})}</div>`}<div style="flex:1;min-width:0"><div class="nm">${esc(e.name)}</div>
       <div class="row" style="gap:6px;margin-top:6px"><span class="badge red">${e.group}</span><span class="badge">${esc(e.equip||'—')}</span></div>
       <div class="mus"><b>${esc(mNames(m.p))}</b>${m.s.length?' · '+esc(mNames(m.s)):''}</div></div></div>
     ${e.notes?`<div class="tip">${esc(e.notes)}</div>`:''}
     ${u.length?`<div class="used">${u.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:''}
-    <div class="acts" onclick="event.stopPropagation()"><button class="btn sm red" onclick="A.exAssign('${e.id}')">Atribuir a um dia</button><button class="btn sm ghost" onclick="A.exEdit('${e.id}')">Editar</button><button class="btn sm danger icon" onclick="A.exDel('${e.id}')">✕</button></div></div>`}).join('')}</div>`;
+    <div class="acts" onclick="event.stopPropagation()"><button class="btn sm red" onclick="A.exAssign('${e.id}')">Atribuir a um dia</button><button class="btn sm ghost" onclick="A.exEdit('${e.id}')">Editar</button><a class="btn sm ghost" style="text-decoration:none" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent('como fazer '+e.name)}">Vídeo</a><button class="btn sm danger icon" onclick="A.exDel('${e.id}')">✕</button></div></div>`}).join('')}</div>`;
 }
 function figState(){if(UI.exSel&&exById(UI.exSel))return musclesOf(exById(UI.exSel));if(UI.exMuscle)return{hl:[UI.exMuscle]};if(UI.exGroup)return{hl:Object.keys(MUSC).filter(k=>MUSC[k][1]===UI.exGroup)};return{}}
 function figInfo(){
@@ -1530,9 +1744,9 @@ function vExercicios(){
     <div class="card"><h3>Anatomia <span class="r"><span class="mlegend" style="margin:0"><span><i class="dp"></i>Principal</span><span><i class="ds"></i>Secundário</span></span></span></h3>
      <div id="bigFig">${figSVG(figState(),{click:'A.exMuscle',labels:true})}</div><div id="figInfo">${figInfo()}</div>
      <div class="chips" style="margin-top:12px"><button class="chip ${!UI.exGroup&&!UI.exMuscle?'on':''}" onclick="A.exGroup('')">Todos</button>${GROUPS.map(g=>`<button class="chip ${UI.exGroup===g?'on':''}" onclick="A.exGroup('${g}')">${g}</button>`).join('')}</div></div></div>
-   <div class="col" style="flex:1"><div class="card"><h3>Catálogo <span class="r">${S.exercises.length} exercícios</span></h3>
-     <div class="row" style="margin-bottom:14px"><input placeholder="Buscar exercício..." value="${esc(UI.exSearch)}" oninput="A.exSearch(this.value)" style="flex:1"><button class="btn red" onclick="A.exEdit(null)">+ Novo exercício</button></div>
-     <div id="exList">${exListHTML()}</div></div></div></div>`;
+   <div class="col" style="flex:1"><div class="card"><h3>${UI.exMode==='lib'?'Biblioteca completa':'Meu catálogo'} <span class="r"><span class="seg"><button class="${UI.exMode!=='lib'?'on':''}" onclick="A.exMode('meu')">Meu catálogo (${S.exercises.length})</button><button class="${UI.exMode==='lib'?'on':''}" onclick="A.exMode('lib')">Biblioteca 800+</button></span></span></h3>
+     <div class="row" style="margin-bottom:14px"><input placeholder="Buscar exercício..." value="${esc(UI.exSearch)}" oninput="A.exSearch(this.value)" style="flex:1">${UI.exMode==='lib'?`<select onchange="UI.libEq=this.value;UI.libLimit=36;$('#exList').innerHTML=libListHTML()"><option value="">Todo equipamento</option>${Object.values(FEDB_E).map(v=>`<option ${UI.libEq===v?'selected':''}>${v}</option>`).join('')}</select>`:`<button class="btn red" onclick="A.exEdit(null)">+ Novo exercício</button>`}</div>
+     <div id="exList">${UI.exMode==='lib'?libListHTML():exListHTML()}</div></div></div></div>`;
 }
 
 /* ============ Programas ============ */
@@ -1660,9 +1874,9 @@ const A={
   sessAddEx(){const id=$('#addExSel').value;if(!id)return;S.draft.entries.push({exId:id,rest:90,target:'8-12',sets:[0,1,2].map(()=>({w:lastWeight(id)??'',r:'',done:false}))});save();render()},
   sessNotes(v){S.draft.notes=v;save()},
   sessReset(){if(!confirm('Recarregar os exercícios do programa? Os dados não salvos desta sessão serão perdidos.'))return;S.draft=buildDraft(S.draft.date,S.draft.dayId);save();render()},
-  sessSave(){const D=clone(S.draft);delete D.fromLog;const ex=S.logs.find(l=>l.date===D.date);D.id=ex?ex.id:uid();
+  sessSave(){const before=rankAll().rs.map(r=>r.lvl);const D=clone(S.draft);delete D.fromLog;const ex=S.logs.find(l=>l.date===D.date);D.id=ex?ex.id:uid();
     const day=findDay(D.dayId);D.dayName=day?day.name:'Treino livre';
-    S.logs=S.logs.filter(l=>l.date!==D.date);S.logs.push(D);S.attendance[D.date]='fui';S.draft.fromLog=true;S.draft.id=D.id;S.draft.dayName=D.dayName;save();render();const prs=prEvents().filter(e=>e.date===D.date);toast(prs.length?`Treino salvo. ${prs.length>1?prs.length+' novos recordes':'Novo recorde'}: ${exName(prs[0].exId)} ${fmtN(prs[0].w)} kg!`:'Treino salvo e dia marcado como “fui”.',prs.length?4500:2200)},
+    S.logs=S.logs.filter(l=>l.date!==D.date);S.logs.push(D);S.attendance[D.date]='fui';S.draft.fromLog=true;S.draft.id=D.id;S.draft.dayName=D.dayName;save();render();const up=rankAll().rs.filter((r,i)=>r.lvl>before[i]&&r.lvl>0);if(up.length)return toast(`⚡ Transformação! ${up.map(r=>r.L.label+': '+FORMS[r.lvl].n).join(' · ')}`,6000);const prs=prEvents().filter(e=>e.date===D.date);toast(prs.length?`Treino salvo. ${prs.length>1?prs.length+' novos recordes':'Novo recorde'}: ${exName(prs[0].exId)} ${fmtN(prs[0].w)} kg!`:'Treino salvo e dia marcado como “fui”.',prs.length?4500:2200)},
   openLog(id){const l=S.logs.find(x=>x.id===id);if(!l)return;S.draft=clone(l);S.draft.fromLog=true;save();render()},
   delLog(id){if(!confirm('Excluir este treino do histórico?'))return;const l=S.logs.find(x=>x.id===id);S.logs=S.logs.filter(x=>x.id!==id);if(S.draft&&l&&S.draft.date===l.date)S.draft.fromLog=false;save();render()},
   // dieta
@@ -1752,6 +1966,25 @@ const A={
     if(!o.work&&!o.rest)return toast('Defina trabalho ou descanso.');
     if(UI.presetEdit){Object.assign(S.presets.find(p=>p.id===UI.presetEdit),o);UI.presetEdit=null}else S.presets.push({id:uid(),...o});save();render();toast('Timer salvo.')},
   presetDel(id){if(!confirm('Excluir este timer?'))return;S.presets=S.presets.filter(p=>p.id!==id);if(UI.presetEdit===id)UI.presetEdit=null;save();render()},
+  offOpen(ctx,mi){OFF.ctx=ctx||null;OFF.mi=mi==null?null:mi;OFF.err='';
+    showModal(`<h3>Open Food Facts</h3><p class="mut small" style="margin:-6px 0 10px">Busque pelo nome ou pelo código de barras. Os valores são por 100 g/ml e vêm com fibras, sódio, vitaminas e minerais quando o rótulo informa.</p>
+     <form class="row" onsubmit="event.preventDefault();offSearch($('#offQ').value)"><input id="offQ" value="${esc(OFF.q)}" placeholder="Ex.: whey, iogurte grego, 7891000100103" style="flex:1"><button class="btn red" type="submit">Buscar</button>${'BarcodeDetector' in window?'<button class="btn ghost" type="button" onclick="scanStart()">📷 Ler código</button>':''}</form>
+     <label class="tg" style="margin:8px 0"><input type="checkbox" ${OFF.br?'checked':''} onchange="OFF.br=this.checked">Só produtos do Brasil</label>
+     <div id="scanBox"></div><div id="offRes" style="max-height:52vh;overflow:auto"></div>
+     <div class="row" style="margin-top:10px"><span class="mut small">Dados: Open Food Facts (ODbL), feitos por voluntários. Confira com o rótulo.</span><span class="sp"></span><button class="btn ghost" onclick="scanStop();closeModal()">Fechar</button></div>`,true);
+    offRender();setTimeout(()=>{const q=$('#offQ');if(q)q.focus()},50)},
+  offPick(i){const pr=OFF.res[i];const m=offMacros(pr),mic=offMicros(pr);UI.offSel=i;const unit=/\d\s*(ml|l)\b/i.test(pr.quantity||'')?'ml':'g';const cat=offCat(pr,m);
+    const ss=parseFloat(String(pr.serving_size||'').replace(',','.'))||'';
+    $('#offRes').innerHTML=`<div class="offp" style="align-items:flex-start">${pr.image_front_small_url?`<img src="${esc(pr.image_front_small_url)}" alt="">`:''}<div style="flex:1">
+      <label class="f">Nome no seu banco<input id="ofN" value="${esc(offName(pr)+(offBrand(pr)?' ('+offBrand(pr)+')':''))}"></label>
+      <div class="row" style="margin-top:8px"><label class="f">Tipo<select id="ofC">${FOOD_CATS.map(c=>`<option ${c===cat?'selected':''}>${c}</option>`).join('')}</select></label>
+      <label class="f">Medida<select id="ofU"><option value="g" ${unit==='g'?'selected':''}>gramas</option><option value="ml" ${unit==='ml'?'selected':''}>ml</option></select></label>
+      ${OFF.ctx?`<label class="f">Quantidade comida<input id="ofQ" type="number" value="${ss||100}" style="width:90px"></label>`:''}</div>
+      <div class="small" style="margin-top:8px">Por 100: <b>${fmtN(m.kcal)}</b> kcal · ${fmtN(m.p)} P · ${fmtN(m.c)} C · ${fmtN(m.g)} G · ${Object.keys(mic).length} nutrientes extras${ss?` · porção do rótulo ${esc(pr.serving_size)}`:''}</div>
+      <div class="row" style="margin-top:10px"><button class="btn red" onclick="A.offSave()">${OFF.ctx==='d'?'Adicionar e marcar como comido':OFF.ctx==='p'?'Adicionar à refeição':'Adicionar ao banco'}</button><button class="btn ghost" onclick="offRender()">Voltar</button></div></div></div>`},
+  offSave(){const pr=OFF.res[UI.offSel];const m=offMacros(pr);const f={id:uid(),name:$('#ofN').value.trim()||offName(pr),cat:$('#ofC').value,unit:$('#ofU').value,label:'',kcal:m.kcal,p:m.p,c:m.c,g:m.g,n:offMicros(pr),off:pr.code||''};
+    S.foods.push(f);if(OFF.ctx){const q=+$('#ofQ').value||100;const it={foodId:f.id,qty:q};if(OFF.ctx==='d'){it.eaten=true;it.extra=true}A.fiList(OFF.ctx)[OFF.mi].items.push(it)}
+    save();scanStop();closeModal();render();toast(`${f.name} adicionado${OFF.ctx?'':' ao banco de alimentos'}.`)},
   // exercícios
   exGroup(g){UI.exGroup=UI.exGroup===g?'':g;UI.exMuscle='';UI.exSel=null;render()},
   exMuscle(m){UI.exMuscle=UI.exMuscle===m?'':m;UI.exSel=null;UI.exGroup='';render()},
@@ -1760,8 +1993,11 @@ const A={
   mmCycle(m){const M=UI.mm;if(M.p.includes(m)){M.p=M.p.filter(x=>x!==m);M.s.push(m)}else if(M.s.includes(m))M.s=M.s.filter(x=>x!==m);else M.p.push(m);
     $('#mFig').innerHTML=figSVG(M,{click:'A.mmCycle',fibers:false,labels:true});$('#mList').innerHTML=mmText()},
   openFolder(){fetch('/api/open-folder',{method:'POST'}).then(r=>{if(!r.ok)throw 0}).catch(()=>toast('Não consegui abrir a pasta.'))},
-  exSearch(v){UI.exSearch=v;$('#exList').innerHTML=exListHTML()},
-  exEdit(id){const e=id?exById(id):{name:'',group:UI.exGroup||'Peito',equip:'',notes:''};UI.mm=clone(id?musclesOf(e):{p:[],s:[]});
+  exSearch(v){UI.exSearch=v;UI.libLimit=36;$('#exList').innerHTML=UI.exMode==='lib'?libListHTML():exListHTML()},
+  exMode(m){UI.exMode=m;UI.libLimit=36;UI.exSel=null;render()},
+  libToggle(id){UI.libOpen=UI.libOpen===id?null:id;$('#exList').innerHTML=libListHTML()},
+  libAdd(id){const x=LIB.data.find(y=>y.id===id);if(!x)return;A.exEdit(null);setTimeout(()=>{$('#mN').value=x.pt;$('#mG').value=GROUPS.includes(x.g)?x.g:'Cardio';$('#mE').value=x.eq;$('#mT').value='';UI.mm=clone(x.m);UI.newSrc='fedb:'+x.id;UI.newImg=x.img[0]||'';$('#mFig').innerHTML=figSVG(UI.mm,{click:'A.mmCycle',fibers:false,labels:true});$('#mList').innerHTML=mmText()},30)},
+  exEdit(id){UI.newSrc=null;UI.newImg=null;const e=id?exById(id):{name:'',group:UI.exGroup||'Peito',equip:'',notes:''};UI.mm=clone(id?musclesOf(e):{p:[],s:[]});
     showModal(`<h3>${id?'Editar exercício':'Novo exercício'}</h3><div class="fg">
       <label class="f full">Nome<input id="mN" value="${esc(e.name)}"></label>
       <label class="f">Grupo muscular<select id="mG">${GROUPS.map(g=>`<option ${g===e.group?'selected':''}>${g}</option>`).join('')}</select></label>
@@ -1770,7 +2006,7 @@ const A={
       <div class="f full"><span>Músculos trabalhados <span class="mut">— clique: 1× principal, 2× secundário, 3× remove</span></span><div id="mFig" class="mfig">${figSVG(UI.mm,{click:'A.mmCycle',fibers:false,labels:true})}</div><div id="mList" class="small" style="text-align:center">${mmText()}</div></div></div>
       <div class="row end" style="margin-top:16px"><button class="btn ghost" onclick="closeModal()">Cancelar</button><button class="btn red" onclick="A.exSave(${id?`'${id}'`:'null'})">Salvar</button></div>`,true);setTimeout(()=>$('#mN').focus(),50)},
   exSave(id){const o={name:$('#mN').value.trim(),group:$('#mG').value,equip:$('#mE').value.trim(),notes:$('#mT').value.trim(),muscles:clone(UI.mm)};if(!o.name)return toast('Dê um nome ao exercício.');if(!o.muscles.p.length)return toast('Marque pelo menos um músculo principal no boneco.');
-    if(id)Object.assign(exById(id),o);else S.exercises.push({id:uid(),...o});save();closeModal();render();toast('Exercício salvo.')},
+    if(id)Object.assign(exById(id),o);else{if(UI.newSrc){o.src=UI.newSrc;o.img=UI.newImg}S.exercises.push({id:uid(),...o})}UI.newSrc=null;UI.newImg=null;save();closeModal();render();toast(o.src?'Exercício adicionado ao seu catálogo.':'Exercício salvo.')},
   exDel(id){const u=usedIn(id);if(!confirm(u.length?`Este exercício está em: ${u.join(', ')}. Excluir e remover dos programas?`:'Excluir este exercício do catálogo?'))return;
     S.exercises=S.exercises.filter(e=>e.id!==id);S.programs.forEach(p=>p.days.forEach(d=>d.items=d.items.filter(i=>i.exId!==id)));S.goals=S.goals.filter(g=>g.exId!==id);save();render()},
   exAssign(id){const p=activeProgram();
