@@ -350,6 +350,10 @@ table.nut td{padding:6px 8px}table.nut tr.ng td{background:#101114;color:var(--s
 .gl{padding:10px 0;border-bottom:1px solid #1d1f23}.gl:last-child{border-bottom:0}.gl-r{display:flex;gap:8px;align-items:center;margin-bottom:6px}.gl-r select{flex:1;min-width:0}
 .gl-r input{width:72px}.gl-r input.gl-reps{width:52px}.gl-v{font-family:var(--fh);color:var(--silver-hi);font-size:15px}.gl-p{font-family:var(--fh);color:var(--silver-hi)}
 @media (max-width:900px){.goal2{grid-template-columns:1fr}}
+.rk-grid.six{grid-template-columns:repeat(6,minmax(0,1fr))}.rk-h{flex-wrap:wrap;row-gap:6px}.rk-h b{flex:1 1 8.5em;min-width:0}.rk-h .form{flex:none}.rk-more{display:flex;flex-direction:column;align-items:flex-start;gap:4px;cursor:pointer;text-align:left;font:inherit;color:inherit;--fc:#e0182d;border-style:dashed}
+.rk-more b{font-family:var(--fh);font-size:30px;color:var(--silver-hi)}.rk-more .btn{margin-top:auto}.rk-more:hover{border-color:var(--red)}
+.rk-dist{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.rk-dist b{color:var(--silver-hi);margin-left:2px}
+@media (max-width:1400px){.rk-grid.six{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (max-width:760px){.rk-grid.six{grid-template-columns:1fr}}
 /* Chart */
 .chart svg{display:block}
 .chart [data-c]{width:100%;overflow:hidden}
@@ -984,13 +988,14 @@ const ICONS={
  treinos:'<path d="M6.5 6v12M17.5 6v12M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/>',
  dieta:'<path d="M12 7.5c-3-2.2-7.5-.4-7.5 4.6 0 4.2 3 8.4 5.2 8.4 1 0 1.5-.5 2.3-.5s1.3.5 2.3.5c2.2 0 5.2-4.2 5.2-8.4 0-5-4.5-6.8-7.5-4.6z"/><path d="M12 7.5c0-2 1-3.5 3-4.5"/>',
  graficos:'<path d="M3 20h18M6 16l4-5 4 3 5-7"/>',
+ ranking:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
  exercicios:'<path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/>',
  programas:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
  perfil:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
  timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2.5h6"/>',
  inicio:'<path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12h6M9.5 10v4M14.5 10v4"/>',
  mais:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'};
-const TABS=[['painel','Painel','Visão geral do dia'],['treinos','Treinos','Calendário de presença e registro das sessões'],['dieta','Dieta','Metas, refeições do dia e plano alimentar'],['graficos','Gráficos','Evolução de força, frequência, corpo e dieta'],['exercicios','Exercícios','Catálogo de exercícios — atribua cada um a um dia'],['programas','Programas','Edite os dias, exercícios, séries e cargas'],['perfil','Perfil','Informações pessoais, medidas e evolução']];
+const TABS=[['painel','Painel','Visão geral do dia'],['treinos','Treinos','Calendário de presença e registro das sessões'],['dieta','Dieta','Metas, refeições do dia e plano alimentar'],['graficos','Gráficos','Evolução de força, frequência, corpo e dieta'],['ranking','Ranking','Transformações em todos os exercícios'],['exercicios','Exercícios','Catálogo de exercícios — atribua cada um a um dia'],['programas','Programas','Edite os dias, exercícios, séries e cargas'],['perfil','Perfil','Informações pessoais, medidas e evolução']];
 TABS.unshift(['inicio','Início','Shape Inexplicável']);
 if(IS_WEB)TABS.splice(4,0,['timer','Timer','Cronômetro de descanso e intervalos']);
 const UI={exMode:'meu',libLimit:36,libEq:'',libOpen:null,offSel:null,presetEdit:null,pendingRender:false,foodCat:'',foodQ:'',mb:null,dietMonth:today().slice(0,7),planEdit:null,progTable:null,exMuscle:'',exSel:null,mm:{p:[],s:[]},tab:'inicio',calMonth:today().slice(0,7),dietDate:today(),measField:'peso',exGroup:'',exSearch:'',chartEx:null,progId:null};
@@ -1303,7 +1308,7 @@ function vGraficos(){
   // dieta
   const days=[...Array(14)].map((_,i)=>addDays(today(),i-13));const kc=days.map(d=>dietTotals(d).kcal);
   return `<div class="grid g2">
-   <div class="card span3"><h3>Transformações <span class="r">ranking de força pelo seu peso corporal</span></h3>${rankHTML()}</div>
+   <div class="card span3"><h3>Transformações <span class="r"><button class="btn sm ghost" onclick="go('ranking')">Ranking completo</button></span></h3>${rankHTML()}</div>
    <div class="card span3"><h3>Força <span class="r"><select onchange="A.chartEx(this.value)">${list.map(id=>`<option value="${id}" ${id===UI.chartEx?'selected':''}>${esc(exName(id))}</option>`).join('')}</select></span></h3>
      <div class="row" style="margin-bottom:10px"><div class="stat"><b>${pr?fmtN(pr,1)+' kg':'—'}</b><span>Melhor 1RM estimado</span></div><div class="stat"><b>${prW?fmtN(prW,1)+' kg':'—'}</b><span>Maior carga</span></div><div class="stat"><b>${h.length}</b><span>Sessões registradas</span></div></div>
      ${lineChart([{name:'1RM estimado',color:'#e0182d',points:h.map(x=>({x:x.date,y:+x.e1rm.toFixed(1)}))},{name:'Maior carga',color:'#c9ced4',points:h.map(x=>({x:x.date,y:x.max}))}],{h:280,unit:'kg',goal:goal?+goal.target:null,empty:'Salve treinos com carga e repetições para ver sua evolução aqui.'})}
@@ -1699,33 +1704,75 @@ const RANK_LIFTS=[
  {name:'Desenvolvimento militar com barra',label:'Desenvolvimento',type:'ratio',t:[0,.45,.6,.75,.9,1.05,1.2,1.35]},
  {name:'Barra fixa',label:'Barra fixa',type:'reps',t:[0,3,5,10,15,20,25,30]},
  {name:'Flexão de braço',label:'Flexão',type:'reps',t:[0,10,20,30,40,50,60,75]}];
+/* padrão "Super Saiyajin" de cada exercício: múltiplo do peso corporal (1RM; halteres = peso de cada halter) ou repetições */
+const RANK_RULES=[
+ [/prancha|farmer|dead bug/,null],[/burpee/,'r',20],
+ [/barra fixa supinada/,'r',12],[/elevação de pernas na barra/,'r',15],[/elevação de pernas/,'r',25],[/flexão nórdica/,'r',5],[/flexão declinada/,'r',25],[/flexão inclinada/,'r',35],
+ [/paralelas/,'r',15],[/mergulho/,'r',25],[/hiperextensão/,'r',20],[/ponte de glúteo/,'r',30],[/abdominal infra/,'r',25],[/abdominal (supra|oblíquo|bicicleta)|russian/,'r',40],[/roda abdominal/,'r',12],
+ [/supino reto no smith/,'x',1],[/supino inclinado (com barra|no smith)/,'x',.85],[/supino declinado/,'x',1.05],[/supino inclinado com halteres/,'x',.35],[/supino reto com halteres/,'x',.4],
+ [/supino máquina|chest press/,'x',.9],[/supino pegada fechada/,'x',.85],
+ [/crucifixo invertido com halteres/,'x',.1],[/crucifixo invertido/,'x',.35],[/crucifixo inclinado/,'x',.2],[/crucifixo com halteres/,'x',.22],[/peck deck/,'x',.6],[/crossover/,'x',.3],[/pullover/,'x',.3],
+ [/pulldown/,'x',.45],[/puxada/,'x',.85],[/remada cavalinho/,'x',.8],[/remada curvada|remada no smith/,'x',.85],[/remada (serrote|unilateral)/,'x',.4],[/remada baixa|remada articulada/,'x',.8],
+ [/encolhimento com barra/,'x',1.2],[/encolhimento com halteres/,'x',.45],[/remada alta/,'x',.5],[/face pull/,'x',.3],
+ [/panturrilha no leg press/,'x',2],[/leg press unilateral/,'x',1.4],[/leg press/,'x',2.5],[/hack/,'x',1.5],[/agachamento no smith com pés/,'x',1.3],[/agachamento no smith|box squat/,'x',1.4],
+ [/agachamento sumô/,'x',.5],[/agachamento goblet/,'x',.4],[/agachamento búlgaro/,'x',.3],[/afundo no smith/,'x',.8],[/afundo|passada|avanço|subida no banco/,'x',.3],
+ [/cadeira extensora/,'x',1],[/cadeira adutora|abdução/,'x',.9],[/flexora em pé/,'x',.25],[/flexora/,'x',.7],[/stiff com halteres/,'x',.45],[/stiff/,'x',1.25],[/bom dia/,'x',.75],
+ [/terra sumô/,'x',1.75],[/hexagonal/,'x',1.9],[/elevação pélvica/,'x',1.5],[/coice na máquina/,'x',.4],[/glúteo na polia/,'x',.2],
+ [/panturrilha unilateral/,'x',.3],[/panturrilha sentado/,'x',.8],[/panturrilha/,'x',1.2],
+ [/desenvolvimento arnold/,'x',.25],[/desenvolvimento com halteres/,'x',.3],[/desenvolvimento/,'x',.6],
+ [/elevação lateral na polia/,'x',.08],[/elevação lateral na máquina/,'x',.3],[/elevação lateral/,'x',.12],[/elevação frontal/,'x',.14],
+ [/rosca direta/,'x',.5],[/rosca com barra w/,'x',.45],[/rosca inversa/,'x',.35],[/rosca no banco scott|rosca concentrada|rosca inclinada/,'x',.17],[/rosca scott|rosca na polia/,'x',.4],[/rosca de punho/,'x',.25],[/rosca/,'x',.2],
+ [/tríceps unilateral/,'x',.15],[/tríceps corda/,'x',.45],[/tríceps pulley/,'x',.5],[/tríceps na máquina/,'x',.6],[/tríceps testa/,'x',.4],[/tríceps francês/,'x',.3],[/tríceps coice/,'x',.12],
+ [/abdominal na (máquina|polia)/,'x',.9]];
+const RANK_X=[0,.75,1,1.25,1.5,1.75,2,2.25],RANK_R=[0,.3,.5,1,1.5,2,2.5,3];
+const rankCache={key:'',map:{}};
+function rankStd(ex){const ex0=RANK_LIFTS.find(L=>L.name===ex.name);if(ex0)return{...ex0,label:ex.name,short:ex0.label};
+  const n=ex.name.toLowerCase();let rule=RANK_RULES.find(([re])=>re.test(n));
+  if(!rule){if(ex.group==='Cardio')return null;const eq=(ex.equip||'').toLowerCase();
+    rule=/peso corporal/.test(eq)?[0,'r',20]:/halter|kettle/.test(eq)?[0,'x',.25]:/barra|smith/.test(eq)?[0,'x',.7]:/máquina|polia/.test(eq)?[0,'x',.6]:null;if(!rule)return null}
+  if(!rule[1])return null;
+  return rule[1]==='r'?{name:ex.name,label:ex.name,type:'reps',t:RANK_R.map(k=>Math.max(k?1:0,Math.round(k*rule[2])))}:{name:ex.name,label:ex.name,type:'ratio',t:RANK_X.map(k=>+(k*rule[2]).toFixed(3))}}
 function bodyW(){const ms=measSorted().filter(m=>+m.peso>0);return ms.length?+ms[ms.length-1].peso:0}
 function maxReps(exId){let r=0;S.logs.forEach(l=>l.entries.forEach(e=>{if(e.exId!==exId)return;e.sets.forEach(s=>{if(s.r!==''&&s.r!=null&&(s.done||s.w===''||s.w==null||+s.w===0))r=Math.max(r,+s.r)})}));return r}
-function rankLift(L){const ex=S.exercises.find(e=>e.name===L.name);if(!ex)return{L,val:0,lvl:-1};const bw=bodyW();
-  const val=L.type==='reps'?maxReps(ex.id):bestE1rm(ex.id);if(!val||(L.type==='ratio'&&!bw))return{L,ex,val:0,lvl:-1};
+function rankEx(ex){const L=rankStd(ex);if(!L)return null;const bw=bodyW();
+  const val=L.type==='reps'?maxReps(ex.id):bestE1rm(ex.id);if(!val||(L.type==='ratio'&&!bw))return{L,ex,val:0,lvl:-1,score:-1};
   const x=L.type==='reps'?val:val/bw;let lvl=0;L.t.forEach((th,i)=>{if(x>=th)lvl=i});const next=L.t[lvl+1];
-  const frac=next!=null?(x-L.t[lvl])/(next-L.t[lvl]):1;const need=next!=null?(L.type==='reps'?Math.ceil(next-x):Math.ceil((next*bw-val)/2.5)*2.5):0;
-  return{L,ex,val,x,lvl,frac,need,next}}
-function rankAll(){const rs=RANK_LIFTS.map(rankLift);
-  const main=rs.filter(r=>r.lvl>=0);const avg=main.length?main.reduce((a,r)=>a+r.lvl+Math.min(.99,r.frac),0)/main.length:0;
-  const bw=bodyW();const big=['Supino','Agachamento','Levantamento terra'].map(n=>rs.find(r=>r.L.label===n)).filter(r=>r&&r.val);
-  const power=bw?Math.round(big.reduce((a,r)=>a+r.val,0)/bw*1000):0;return{rs,overall:main.length?Math.floor(avg):-1,avg,power,bw}}
+  const frac=next!=null?Math.max(0,Math.min(1,(x-L.t[lvl])/(next-L.t[lvl]))):1;
+  let need=0;if(next!=null){if(L.type==='reps')need=Math.max(1,Math.ceil(next-x));else{const kg=next*bw-val,st=next*bw<25?1:2.5;need=Math.max(st,Math.ceil(kg/st)*st)}}
+  return{L,ex,val,x,lvl,frac,need,next,score:lvl+Math.min(.99,frac)}}
+function rankAll(){const rs=S.exercises.map(rankEx).filter(Boolean);
+  const main=rs.filter(r=>r.lvl>=0);const avg=main.length?main.reduce((a,r)=>a+r.score,0)/main.length:0;
+  const bw=bodyW();const big=['Supino reto com barra','Agachamento livre com barra','Levantamento terra'].map(n=>rs.find(r=>r.ex.name===n)).filter(r=>r&&r.val);
+  const power=bw?Math.round(big.reduce((a,r)=>a+r.val,0)/bw*1000):0;return{rs,overall:main.length?Math.floor(avg):-1,avg,power,bw,count:main.length}}
 const formBadge=(lvl,big)=>lvl<0?'<span class="form none">Sem dados</span>':`<span class="form ${big?'big':''}" style="--fc:${FORMS[lvl].c}">${FORMS[lvl].n}</span>`;
-function rankHTML(){const R=rankAll();
-  const cards=R.rs.map(r=>{const lv=r.lvl,L=r.L;const unit=L.type==='reps'?'reps':'kg';
-    const valTxt=r.val?(L.type==='reps'?`${r.val} reps`:`${fmtN(r.val,1)} kg · ${fmtN(r.x,2)}× peso`):'—';
-    const nx=lv>=0&&lv<FORMS.length-1?`faltam <b>${L.type==='reps'?r.need+' reps':fmtN(r.need)+' kg'}</b> para ${FORMS[lv+1].n}`:lv===FORMS.length-1?'Forma máxima alcançada':'Registre esse exercício para ganhar uma forma';
-    return `<div class="rk" style="--fc:${lv>=0?FORMS[lv].c:'#3a3e45'}"><div class="rk-h"><b>${L.label}</b>${formBadge(lv)}</div><div class="rk-v">${valTxt}</div>
-     <div class="rk-bar">${FORMS.map((f,i)=>`<i class="${i<lv?'on':i===lv?'cur':''}" style="--c:${f.c}">${i===lv&&lv<FORMS.length-1?`<u style="width:${Math.round(Math.max(0,Math.min(1,r.frac))*100)}%"></u>`:''}</i>`).join('')}</div>
-     <div class="rk-n">${nx}</div></div>`}).join('');
-  return `<div class="rk-top" style="--fc:${R.overall>=0?FORMS[R.overall].c:'#5c636c'}"><div><div class="hc-k">Forma atual</div><div class="rk-form">${R.overall>=0?FORMS[R.overall].n:'Base'}</div>
-     <div class="mut small">Média das suas formas nos exercícios registrados · peso corporal ${R.bw?fmtN(R.bw,1)+' kg':'—'}</div></div>
-     <div class="rk-pl"><div class="hc-k">Poder de luta</div><b>${fmtN(R.power)}</b><div class="mut small">(supino + agachamento + terra) ÷ peso × 1000</div></div></div>
-   <div class="rk-grid">${cards}</div>
-   <details class="rk-tab"><summary>Ver a tabela de transformações</summary>${rankTableHTML(R.bw)}</details>`}
-function rankTableHTML(bw){return `<table class="t"><tr><th>Forma</th>${RANK_LIFTS.map(L=>`<th class="num">${L.label}</th>`).join('')}</tr>
+function rankCard(r){const lv=r.lvl,L=r.L;
+  const valTxt=r.val?(L.type==='reps'?`${r.val} reps`:`${fmtN(r.val,1)} kg · ${fmtN(r.x,2)}× peso`):'—';
+  const nx=lv>=0&&lv<FORMS.length-1?`faltam <b>${L.type==='reps'?r.need+' reps':fmtN(r.need,r.need%1?1:0)+' kg'}</b> para ${FORMS[lv+1].n}`:lv===FORMS.length-1?'Forma máxima alcançada':'Registre esse exercício para ganhar uma forma';
+  return `<div class="rk" style="--fc:${lv>=0?FORMS[lv].c:'#3a3e45'}"><div class="rk-h"><b>${esc(L.label)}</b>${formBadge(lv)}</div><div class="rk-v">${valTxt}</div>
+   <div class="rk-bar">${FORMS.map((f,i)=>`<i class="${i<lv?'on':i===lv?'cur':''}" style="--c:${f.c}">${i===lv&&lv<FORMS.length-1?`<u style="width:${Math.round(r.frac*100)}%"></u>`:''}</i>`).join('')}</div>
+   <div class="rk-n">${nx}</div></div>`}
+function rankTopHTML(R){return `<div class="rk-top" style="--fc:${R.overall>=0?FORMS[R.overall].c:'#5c636c'}"><div><div class="hc-k">Forma atual</div><div class="rk-form">${R.overall>=0?FORMS[R.overall].n:'Base'}</div>
+   <div class="mut small">Média das suas formas em ${R.count} exercício${R.count===1?'':'s'} registrado${R.count===1?'':'s'} · peso corporal ${R.bw?fmtN(R.bw,1)+' kg':'—'}</div></div>
+   <div class="rk-pl"><div class="hc-k">Poder de luta</div><b>${fmtN(R.power)}</b><div class="mut small">(supino + agachamento + terra) ÷ peso × 1000</div></div></div>`}
+function rankHTML(){const R=rankAll();const sorted=R.rs.filter(r=>r.lvl>=0).sort((a,b)=>b.score-a.score);
+  let top=sorted.slice(0,5);if(top.length<5)top=top.concat(R.rs.filter(r=>r.lvl<0&&RANK_LIFTS.some(L=>L.name===r.ex.name)).slice(0,5-top.length));
+  return rankTopHTML(R)+`<div class="rk-grid six">${top.map(rankCard).join('')}
+   <button class="rk rk-more" onclick="go('ranking')"><div class="hc-k">Ranking completo</div><b>${R.rs.length}</b><div class="mut small">exercícios com forma e quanto falta para a próxima</div><span class="btn sm red">Ver ranking →</span></button></div>`}
+function vRanking(){const R=rankAll();const g=UI.rkGroup||'',so=UI.rkSort||'forma';
+  let xs=R.rs.filter(r=>!g||r.ex.group===g);
+  xs.sort(so==='az'?(a,b)=>a.ex.name.localeCompare(b.ex.name):so==='grupo'?(a,b)=>GROUPS.indexOf(a.ex.group)-GROUPS.indexOf(b.ex.group)||b.score-a.score||a.ex.name.localeCompare(b.ex.name):(a,b)=>b.score-a.score||a.ex.name.localeCompare(b.ex.name));
+  const groups=GROUPS.filter(x=>R.rs.some(r=>r.ex.group===x));
+  const counts=FORMS.map((f,i)=>R.rs.filter(r=>r.lvl===i).length);
+  return `<div class="card">${rankTopHTML(R)}
+   <div class="rk-dist">${FORMS.map((f,i)=>counts[i]?`<span>${formBadge(i)} <b>${counts[i]}</b></span>`:'').join('')}<span class="mut small">${R.rs.length-R.count} sem dados</span></div></div>
+   <div class="card" style="margin-top:18px"><h3>Todos os exercícios <span class="r"><select onchange="UI.rkSort=this.value;render()"><option value="forma" ${so==='forma'?'selected':''}>Ordenar por forma</option><option value="grupo" ${so==='grupo'?'selected':''}>Por grupo muscular</option><option value="az" ${so==='az'?'selected':''}>A–Z</option></select></span></h3>
+    <div class="chips" style="margin-bottom:14px"><button class="chip ${!g?'on':''}" onclick="UI.rkGroup='';render()">Todos</button>${groups.map(x=>`<button class="chip ${g===x?'on':''}" onclick="UI.rkGroup='${x}';render()">${x}</button>`).join('')}</div>
+    <div class="rk-grid">${xs.map(rankCard).join('')||'<div class="empty">Nenhum exercício.</div>'}</div>
+    <details class="rk-tab"><summary>Como as formas são calculadas</summary>${rankTableHTML(R.bw)}</details></div>`}
+function rankTableHTML(bw){return `<p class="mut small" style="margin-top:10px">Cada exercício tem um padrão de “Super Saiyajin” (nível intermediário), em múltiplos do seu peso corporal para exercícios com carga (1RM estimado; com halteres, o peso de cada halter) ou em repetições numa série para exercícios com o peso do corpo. As outras formas são proporções desse padrão: Kaioken 75%, Super Saiyajin 100%, SSJ2 125%, SSJ3 150%, God 175%, Blue 200% e Ultra Instinto 225% (no peso do corpo: 30%, 50%, 100%, 150%, 200%, 250% e 300%). Prancha, farmer walk e cardio não entram no ranking. Os exercícios principais seguem a sua tabela de referência:</p>
+  <table class="t"><tr><th>Forma</th>${RANK_LIFTS.map(L=>`<th class="num">${L.label}</th>`).join('')}</tr>
   ${FORMS.map((f,i)=>`<tr><td>${formBadge(i)}</td>${RANK_LIFTS.map(L=>`<td class="num">${L.type==='reps'?L.t[i]+' reps':`${fmtN(L.t[i],2)}×${bw?`<div class="mut small">${fmtN(Math.round(L.t[i]*bw/2.5)*2.5)} kg</div>`:''}`}</td>`).join('')}</tr>`).join('')}</table>
-  <p class="mut small">Classe C da sua tabela = Super Saiyajin · Classe B = Super Saiyajin 2 · Classe A = Super Saiyajin 3. As formas acima de Super Saiyajin 3 seguem os padrões de força “avançado” e “elite”. Exercícios com carga usam o 1RM estimado ÷ peso corporal; barra fixa e flexão usam o máximo de repetições numa série.</p>`}
+  <p class="mut small">Classe C da sua tabela = Super Saiyajin · Classe B = Super Saiyajin 2 · Classe A = Super Saiyajin 3.</p>`}
 
 /* ============ Exercícios ============ */
 function usedIn(exId){const r=[];S.programs.forEach(p=>p.days.forEach(d=>{if(d.items.some(i=>i.exId===exId))r.push((S.programs.length>1?p.name+' · ':'')+d.name.split('—')[0].trim())}));return r}
@@ -1861,7 +1908,7 @@ function syncCardHTML(){
    <label class="f">Endereço do app no celular (GitHub Pages)<input value="${esc(c.mobileUrl||'')}" placeholder="https://seu-usuario.github.io/shape/" onchange="A.mobileUrl(this.value)"></label>
    ${link?`<div class="row"><button class="btn red" onclick="A.copyLink()">Copiar link para o celular</button><span class="mut small">Mande para você mesmo (WhatsApp, e-mail) e abra no celular.</span></div><div class="linkbox" id="mLink">${esc(link)}</div>`:'<p class="mut small">Depois de publicar o app no GitHub Pages, cole o endereço aqui para gerar o link de configuração.</p>'}`:''}`;
 }
-const VIEWS={inicio:vInicio,timer:vTimer,painel:vPainel,treinos:vTreinos,dieta:vDieta,graficos:vGraficos,exercicios:vExercicios,programas:vProgramas,perfil:vPerfil};
+const VIEWS={inicio:vInicio,timer:vTimer,painel:vPainel,treinos:vTreinos,dieta:vDieta,graficos:vGraficos,ranking:vRanking,exercicios:vExercicios,programas:vProgramas,perfil:vPerfil};
 
 /* ============ Modal / toast ============ */
 function showModal(h,wide){$('#modal').innerHTML=h;$('#modal').classList.toggle('wide',!!wide);$('#ov').classList.add('show')}
